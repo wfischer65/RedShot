@@ -1,0 +1,29 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build-Ausgaben
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Release-/Publish-Ausgaben
+artifacts/
+Release/
+
+# Visual-Studio / .NET Zwischenstände
+*.cache
+*.pdb
+*.tmp
+
+# WiX Zwischenstände
+*.wixobj
+*.wixpdb
+
+# Betriebssystem
+Thumbs.db
+Desktop.ini

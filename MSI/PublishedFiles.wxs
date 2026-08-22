@@ -1,0 +1,1462 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Directory Id="dir_67F994533A5D976E" Name="cs">
+      </Directory>
+      <Directory Id="dir_600CCD1B71569232" Name="de">
+      </Directory>
+      <Directory Id="dir_09CD68A2A77B22A3" Name="es">
+      </Directory>
+      <Directory Id="dir_B858A87C07B04C45" Name="fr">
+      </Directory>
+      <Directory Id="dir_6C5522CA8AF86FC5" Name="it">
+      </Directory>
+      <Directory Id="dir_84572EF2253EF81E" Name="ja">
+      </Directory>
+      <Directory Id="dir_65A7DA8F45E5A2F3" Name="ko">
+      </Directory>
+      <Directory Id="dir_F437CB078ACC7C6D" Name="pl">
+      </Directory>
+      <Directory Id="dir_C697295FFABA6889" Name="pt-BR">
+      </Directory>
+      <Directory Id="dir_67B8B1C4FEDB2E38" Name="ru">
+      </Directory>
+      <Directory Id="dir_D9E83874D260F2F1" Name="tr">
+      </Directory>
+      <Directory Id="dir_CFCC93558CB387A4" Name="zh-Hans">
+      </Directory>
+      <Directory Id="dir_806CE4D1F184D84D" Name="zh-Hant">
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="PublishedFiles">
+      <Component Id="cmp_280DAD442025F09DF570" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_280DAD442025F09DF570" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\Accessibility.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F3C5C18A5BE36AA60818" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_F3C5C18A5BE36AA60818" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\clretwrc.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D869A5A7ACE786628F09" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_D869A5A7ACE786628F09" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\clrgc.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C855EC562A75BFC48DAF" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_C855EC562A75BFC48DAF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\clrgcexp.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_883A16C02A1435ED3E29" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_883A16C02A1435ED3E29" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\clrjit.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_63E799BE16EE6AC43E5C" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_63E799BE16EE6AC43E5C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\coreclr.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_173352BD464C6D204F7D" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_173352BD464C6D204F7D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\createdump.exe" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9524BC36FD5A46346A27" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_9524BC36FD5A46346A27" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\Microsoft.VisualBasic.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C768D33A254A171A4438" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_C768D33A254A171A4438" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\PresentationCore.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D4EB6695EDAC91D1708B" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_D4EB6695EDAC91D1708B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\PresentationFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_43BF34C68BAA90F21403" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_43BF34C68BAA90F21403" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\PresentationUI.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B44036A7A09C09B8FEBF" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_B44036A7A09C09B8FEBF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\ReachFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7C8444D3FF52E0F26B14" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_7C8444D3FF52E0F26B14" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\System.Windows.Controls.Ribbon.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_57081D2933FDD2BC3E5C" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_57081D2933FDD2BC3E5C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\System.Windows.Forms.Design.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F9BC3078D367893F1A2C" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_F9BC3078D367893F1A2C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\System.Windows.Forms.Primitives.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_91D230D47F8372DADB96" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_91D230D47F8372DADB96" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\System.Windows.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3A74A37147BACF9DE6E7" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_3A74A37147BACF9DE6E7" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\System.Windows.Input.Manipulations.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7DD3DA2A2585FF9F16DC" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_7DD3DA2A2585FF9F16DC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\System.Xaml.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_323861D0C1587A4BC388" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_323861D0C1587A4BC388" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\UIAutomationClient.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_AE32689D46F8C159417D" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_AE32689D46F8C159417D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\UIAutomationClientSideProviders.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4D59BB537849F5ABAE65" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_4D59BB537849F5ABAE65" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\UIAutomationProvider.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3DA1758D5B693FF3066C" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_3DA1758D5B693FF3066C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\UIAutomationTypes.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_309503E467EE29E98724" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_309503E467EE29E98724" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\WindowsBase.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D10E54B513C5089E32B7" Directory="dir_67F994533A5D976E" Guid="*">
+        <File Id="fil_D10E54B513C5089E32B7" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\cs\WindowsFormsIntegration.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E1B6B70155EA9D0A00A0" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_E1B6B70155EA9D0A00A0" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\D3DCompiler_47_cor3.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9778DF8477508875385C" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_9778DF8477508875385C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\Microsoft.VisualBasic.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DB65B079963CE5113AA4" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_DB65B079963CE5113AA4" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\PresentationCore.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_2D5EF7C3B79E2041ADFC" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_2D5EF7C3B79E2041ADFC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\PresentationFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_AFC3D29970F55DB1418B" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_AFC3D29970F55DB1418B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\PresentationUI.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_18CF952ED16D18C78A2F" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_18CF952ED16D18C78A2F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\ReachFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9C9EE4B2E764624B02D9" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_9C9EE4B2E764624B02D9" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\System.Windows.Controls.Ribbon.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_69243D5FD81DB95063C1" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_69243D5FD81DB95063C1" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\System.Windows.Forms.Design.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B75CEE89D02C58A38C2C" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_B75CEE89D02C58A38C2C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\System.Windows.Forms.Primitives.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_873E03A4008E6F60B8EC" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_873E03A4008E6F60B8EC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\System.Windows.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FD7E0FB2FAD325B62FD6" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_FD7E0FB2FAD325B62FD6" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\System.Windows.Input.Manipulations.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_6FCA8E9577B14B3784D8" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_6FCA8E9577B14B3784D8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\System.Xaml.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F7FA42913244291D772B" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_F7FA42913244291D772B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\UIAutomationClient.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DDBBA83404191B7C0C26" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_DDBBA83404191B7C0C26" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\UIAutomationClientSideProviders.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_37026153254C7DF5CA2A" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_37026153254C7DF5CA2A" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\UIAutomationProvider.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_510CBA8DCDF3B756219B" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_510CBA8DCDF3B756219B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\UIAutomationTypes.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_546FA7A332E7D1B630B4" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_546FA7A332E7D1B630B4" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\WindowsBase.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_EDD4CDAB3EB6E22F4C8F" Directory="dir_600CCD1B71569232" Guid="*">
+        <File Id="fil_EDD4CDAB3EB6E22F4C8F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\de\WindowsFormsIntegration.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B174C70858AE3BA58C9A" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_B174C70858AE3BA58C9A" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\DirectWriteForwarder.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_033386FB74A8385D27D6" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_033386FB74A8385D27D6" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\Microsoft.VisualBasic.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_AF38BEA513273CFEC925" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_AF38BEA513273CFEC925" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\PresentationCore.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B4ED84F1A41CB9517FB1" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_B4ED84F1A41CB9517FB1" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\PresentationFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_82C49E3A43480E4A1401" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_82C49E3A43480E4A1401" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\PresentationUI.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_382D2C86812DD121E704" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_382D2C86812DD121E704" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\ReachFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DBC892D9EE5493CFD2CE" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_DBC892D9EE5493CFD2CE" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\System.Windows.Controls.Ribbon.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C0A5299C3F21DC086125" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_C0A5299C3F21DC086125" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\System.Windows.Forms.Design.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_EA7D6193FD70094650E6" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_EA7D6193FD70094650E6" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\System.Windows.Forms.Primitives.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_10E77409C41985B24FCB" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_10E77409C41985B24FCB" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\System.Windows.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_0D738CF85366920098C5" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_0D738CF85366920098C5" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\System.Windows.Input.Manipulations.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4402690604F16664D212" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_4402690604F16664D212" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\System.Xaml.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B4742BFAB496D19521C6" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_B4742BFAB496D19521C6" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\UIAutomationClient.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_00D89004BBC10977BD4C" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_00D89004BBC10977BD4C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\UIAutomationClientSideProviders.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FACE00C65AAC1D3B0D75" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_FACE00C65AAC1D3B0D75" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\UIAutomationProvider.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8BB91064F1874F483AC2" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_8BB91064F1874F483AC2" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\UIAutomationTypes.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D27388BD537A1CB4B97C" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_D27388BD537A1CB4B97C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\WindowsBase.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_134A3C5A308FB967C66F" Directory="dir_09CD68A2A77B22A3" Guid="*">
+        <File Id="fil_134A3C5A308FB967C66F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\es\WindowsFormsIntegration.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C4CA03F8B1B4F1E574A4" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_C4CA03F8B1B4F1E574A4" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\Microsoft.VisualBasic.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7C1D06DA57E1A6E2A885" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_7C1D06DA57E1A6E2A885" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\PresentationCore.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_36054E1016C6E164723A" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_36054E1016C6E164723A" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\PresentationFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C3EA68A01E3A2C389E2B" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_C3EA68A01E3A2C389E2B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\PresentationUI.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_71EE7DD389330C6DC77F" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_71EE7DD389330C6DC77F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\ReachFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B6815191593DAF36775F" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_B6815191593DAF36775F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\System.Windows.Controls.Ribbon.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4EDA997FD6BACE38D65F" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_4EDA997FD6BACE38D65F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\System.Windows.Forms.Design.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C677D8C600F563136633" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_C677D8C600F563136633" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\System.Windows.Forms.Primitives.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FAB8076D7969AEBE3577" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_FAB8076D7969AEBE3577" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\System.Windows.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E8FE552CB4CA224A31F5" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_E8FE552CB4CA224A31F5" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\System.Windows.Input.Manipulations.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FD08B11FF58B8B731DE9" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_FD08B11FF58B8B731DE9" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\System.Xaml.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_408F854A5A1D1B032306" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_408F854A5A1D1B032306" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\UIAutomationClient.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7C519FFA9CA6BDB679FB" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_7C519FFA9CA6BDB679FB" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\UIAutomationClientSideProviders.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C4DA8AE51D6A379BC8BD" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_C4DA8AE51D6A379BC8BD" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\UIAutomationProvider.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_5E58353CBF2D35A3EC84" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_5E58353CBF2D35A3EC84" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\UIAutomationTypes.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C40AEA406DF58A699AC6" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_C40AEA406DF58A699AC6" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\WindowsBase.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8026D75740DD4D7F204F" Directory="dir_B858A87C07B04C45" Guid="*">
+        <File Id="fil_8026D75740DD4D7F204F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\fr\WindowsFormsIntegration.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3C34B3DC8F8215E6F91F" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_3C34B3DC8F8215E6F91F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\hostfxr.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3D5CD2472B432300E012" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_3D5CD2472B432300E012" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\hostpolicy.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C26D63F74BC34B25A34C" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_C26D63F74BC34B25A34C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\Microsoft.VisualBasic.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DDF3AD8288FFB35FD588" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_DDF3AD8288FFB35FD588" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\PresentationCore.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_419A8CE38CFBD5575AE2" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_419A8CE38CFBD5575AE2" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\PresentationFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F0BC4EC51E6CCC03F5F5" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_F0BC4EC51E6CCC03F5F5" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\PresentationUI.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FD79336171D3A658C1D6" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_FD79336171D3A658C1D6" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\ReachFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DF73112131CDE9477FF9" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_DF73112131CDE9477FF9" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\System.Windows.Controls.Ribbon.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F8E732688A16D176E097" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_F8E732688A16D176E097" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\System.Windows.Forms.Design.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3260FE5131E23E68AF92" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_3260FE5131E23E68AF92" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\System.Windows.Forms.Primitives.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1148D2850F789216B66B" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_1148D2850F789216B66B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\System.Windows.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_5697F77B5A71B02EDE47" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_5697F77B5A71B02EDE47" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\System.Windows.Input.Manipulations.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_6B6A8118DD4DDD0C70AB" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_6B6A8118DD4DDD0C70AB" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\System.Xaml.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_112AC382CE4D8566FB4A" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_112AC382CE4D8566FB4A" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\UIAutomationClient.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_86E55312CD9B09419436" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_86E55312CD9B09419436" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\UIAutomationClientSideProviders.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4C69E543322F0D5DEC21" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_4C69E543322F0D5DEC21" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\UIAutomationProvider.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_BBC699642C266F2DFD38" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_BBC699642C266F2DFD38" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\UIAutomationTypes.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_CD6A57017F983BC9117E" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_CD6A57017F983BC9117E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\WindowsBase.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_04F887D89B5BB5431599" Directory="dir_6C5522CA8AF86FC5" Guid="*">
+        <File Id="fil_04F887D89B5BB5431599" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\it\WindowsFormsIntegration.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4B1094AEB2D7171623B0" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_4B1094AEB2D7171623B0" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\Microsoft.VisualBasic.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DD4C6EBC84D4659E61A9" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_DD4C6EBC84D4659E61A9" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\PresentationCore.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_00E88ABF285F9B5266EA" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_00E88ABF285F9B5266EA" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\PresentationFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E3C122FCF12669621B0F" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_E3C122FCF12669621B0F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\PresentationUI.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B25201A28FB1B918B662" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_B25201A28FB1B918B662" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\ReachFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_548285547F0BE4CB1264" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_548285547F0BE4CB1264" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\System.Windows.Controls.Ribbon.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_629DCAAFA6279981D6BC" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_629DCAAFA6279981D6BC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\System.Windows.Forms.Design.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FC6BFAD703D92985EC0E" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_FC6BFAD703D92985EC0E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\System.Windows.Forms.Primitives.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8A1730FED490E3118F9E" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_8A1730FED490E3118F9E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\System.Windows.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E35552595C5638D26754" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_E35552595C5638D26754" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\System.Windows.Input.Manipulations.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_00BA6E91AAED46451341" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_00BA6E91AAED46451341" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\System.Xaml.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_60B8D85EE8146B9A5B1B" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_60B8D85EE8146B9A5B1B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\UIAutomationClient.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FF06496E0FB07C9299E4" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_FF06496E0FB07C9299E4" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\UIAutomationClientSideProviders.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4679C5A5908686583170" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_4679C5A5908686583170" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\UIAutomationProvider.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_0D9CEA36450CACBE7F73" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_0D9CEA36450CACBE7F73" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\UIAutomationTypes.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1439C69DC5856861DC24" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_1439C69DC5856861DC24" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\WindowsBase.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_5D1841075AA77FA14B56" Directory="dir_84572EF2253EF81E" Guid="*">
+        <File Id="fil_5D1841075AA77FA14B56" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ja\WindowsFormsIntegration.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1D940AB9FA09EB934DCA" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_1D940AB9FA09EB934DCA" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\Microsoft.VisualBasic.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7B79C1D076464231D4FE" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_7B79C1D076464231D4FE" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\PresentationCore.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3FA5314AD684817F269E" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_3FA5314AD684817F269E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\PresentationFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DFEE860591AE883433E5" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_DFEE860591AE883433E5" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\PresentationUI.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_75D35CE5CD8D2359C90E" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_75D35CE5CD8D2359C90E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\ReachFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_131D3B5BB62D6489E05D" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_131D3B5BB62D6489E05D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\System.Windows.Controls.Ribbon.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_24AD314FC37271A98024" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_24AD314FC37271A98024" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\System.Windows.Forms.Design.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A325A12CAB748F048CEF" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_A325A12CAB748F048CEF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\System.Windows.Forms.Primitives.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FB63F6BBEFB9C3C5B5A2" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_FB63F6BBEFB9C3C5B5A2" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\System.Windows.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_CFC862B0A3C493A30F67" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_CFC862B0A3C493A30F67" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\System.Windows.Input.Manipulations.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_93F3CEA071AC7640688F" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_93F3CEA071AC7640688F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\System.Xaml.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B361521E23F62CF9C718" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_B361521E23F62CF9C718" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\UIAutomationClient.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FB1AEBBC2A6CCF6B3579" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_FB1AEBBC2A6CCF6B3579" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\UIAutomationClientSideProviders.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E74DCFABA1D0AAC37921" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_E74DCFABA1D0AAC37921" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\UIAutomationProvider.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_24E1970936AF5807A2F8" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_24E1970936AF5807A2F8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\UIAutomationTypes.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C46B7ADD4015FF14E7F3" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_C46B7ADD4015FF14E7F3" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\WindowsBase.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8CFD23217541071CD4AE" Directory="dir_65A7DA8F45E5A2F3" Guid="*">
+        <File Id="fil_8CFD23217541071CD4AE" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ko\WindowsFormsIntegration.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_6FC72ADE9AFF47790837" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_6FC72ADE9AFF47790837" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\Microsoft.CSharp.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A8832EEDCA0114AA2FAF" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_A8832EEDCA0114AA2FAF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\Microsoft.DiaSymReader.Native.amd64.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_6C160302EE3827D74FAE" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_6C160302EE3827D74FAE" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\Microsoft.VisualBasic.Core.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_6EF268FEACBF69A48757" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_6EF268FEACBF69A48757" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\Microsoft.VisualBasic.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1F0975543BB0C9A3A4B8" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_1F0975543BB0C9A3A4B8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\Microsoft.VisualBasic.Forms.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3A4D6814C8FA8F57E43E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_3A4D6814C8FA8F57E43E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\Microsoft.Win32.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9FFAF9358AA4175E1F53" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_9FFAF9358AA4175E1F53" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\Microsoft.Win32.Registry.AccessControl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_0F0C026EED0C119D0478" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_0F0C026EED0C119D0478" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\Microsoft.Win32.Registry.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B858E6E8DB1439540F7B" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_B858E6E8DB1439540F7B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\Microsoft.Win32.SystemEvents.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DB7616D04D516B4A1210" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_DB7616D04D516B4A1210" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\Microsoft.Windows.SDK.NET.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_5149B581B5E5A9B35DCD" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_5149B581B5E5A9B35DCD" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\mscordaccore_amd64_amd64_10.0.1126.37416.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F056BA9BA87254B772C4" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_F056BA9BA87254B772C4" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\mscordaccore.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_209EC7DC59AEBD359B17" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_209EC7DC59AEBD359B17" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\mscordbi.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3F83668D81A5EFAE08AC" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_3F83668D81A5EFAE08AC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\mscorlib.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8BF6F57CF1FAA5FDE18B" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_8BF6F57CF1FAA5FDE18B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\mscorrc.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_11C88A0654FB9359CEB1" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_11C88A0654FB9359CEB1" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\msquic.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_07D2F53323124D7D8CBF" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_07D2F53323124D7D8CBF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\netstandard.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F5361331AF083049A72B" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_F5361331AF083049A72B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PenImc_cor3.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3A886817D897C59C24D7" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_3A886817D897C59C24D7" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\Microsoft.VisualBasic.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_25993749E76174D6700F" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_25993749E76174D6700F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\PresentationCore.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1B726B74D7E11FA20B91" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_1B726B74D7E11FA20B91" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\PresentationFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_389EB80E198B112799DC" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_389EB80E198B112799DC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\PresentationUI.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_EF9A42E1E3CABD201E8F" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_EF9A42E1E3CABD201E8F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\ReachFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7E3730F24962FCA1B8C7" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_7E3730F24962FCA1B8C7" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\System.Windows.Controls.Ribbon.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D9670601A0355DC044B2" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_D9670601A0355DC044B2" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\System.Windows.Forms.Design.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3BCCBAA22DAADAD85AAF" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_3BCCBAA22DAADAD85AAF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\System.Windows.Forms.Primitives.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1D993AA6845C056E1C73" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_1D993AA6845C056E1C73" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\System.Windows.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1A9426B29D060DD06910" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_1A9426B29D060DD06910" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\System.Windows.Input.Manipulations.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3D0DEF8162EB6D5084AC" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_3D0DEF8162EB6D5084AC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\System.Xaml.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7EB729EF6376869500E2" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_7EB729EF6376869500E2" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\UIAutomationClient.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DD33787B94E9DC8CCEC8" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_DD33787B94E9DC8CCEC8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\UIAutomationClientSideProviders.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_392D65EECB6E34A74A6C" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_392D65EECB6E34A74A6C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\UIAutomationProvider.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3DC536DA738A5981EED4" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_3DC536DA738A5981EED4" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\UIAutomationTypes.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_90F0B798B8BA8EB70E4D" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_90F0B798B8BA8EB70E4D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\WindowsBase.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F6933BE7E34BD8431439" Directory="dir_F437CB078ACC7C6D" Guid="*">
+        <File Id="fil_F6933BE7E34BD8431439" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pl\WindowsFormsIntegration.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D638CA626D4FFE70D5B2" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_D638CA626D4FFE70D5B2" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationCore.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9EF43603B409CC9CEB63" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_9EF43603B409CC9CEB63" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationFramework-SystemCore.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7CA11619EDACCA4037B3" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_7CA11619EDACCA4037B3" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationFramework-SystemData.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_AA887D04AAF428FFFED8" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_AA887D04AAF428FFFED8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationFramework-SystemDrawing.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_85ED5654B921426D4777" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_85ED5654B921426D4777" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationFramework-SystemXml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1669ACD534015A0B4D42" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_1669ACD534015A0B4D42" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationFramework-SystemXmlLinq.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_50DCF2E6D06D233F2D43" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_50DCF2E6D06D233F2D43" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationFramework.Aero.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_23C0E5C0133905528600" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_23C0E5C0133905528600" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationFramework.Aero2.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_EE661685073B809F64D8" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_EE661685073B809F64D8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationFramework.AeroLite.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F19C0A88688A93CE30F0" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_F19C0A88688A93CE30F0" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationFramework.Classic.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E842C69333B9C857E5D9" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_E842C69333B9C857E5D9" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationFramework.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_68F8FC0965933344346D" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_68F8FC0965933344346D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationFramework.Fluent.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9D7771711AE3A445D215" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_9D7771711AE3A445D215" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationFramework.Luna.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_35686DC3A3D05E0323EF" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_35686DC3A3D05E0323EF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationFramework.Royale.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7C1501099ECAD30B415E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_7C1501099ECAD30B415E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationNative_cor3.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_BC327F299A74F051C49B" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_BC327F299A74F051C49B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\PresentationUI.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3979FD0D01B36C726B53" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_3979FD0D01B36C726B53" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\Microsoft.VisualBasic.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B9AA054BBD21F26A14F1" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_B9AA054BBD21F26A14F1" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\PresentationCore.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7AE7E3C178FEF67CE134" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_7AE7E3C178FEF67CE134" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\PresentationFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4E535416381F63C06A37" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_4E535416381F63C06A37" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\PresentationUI.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_6A9A761EDF490BA019DE" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_6A9A761EDF490BA019DE" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\ReachFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A4AC808329E1234F0642" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_A4AC808329E1234F0642" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\System.Windows.Controls.Ribbon.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9EDEF3F63CFD93C33472" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_9EDEF3F63CFD93C33472" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\System.Windows.Forms.Design.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_597BE0C60B012144F20F" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_597BE0C60B012144F20F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\System.Windows.Forms.Primitives.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_36729B49E848111B660E" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_36729B49E848111B660E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\System.Windows.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_165C0705259327AFD35D" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_165C0705259327AFD35D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\System.Windows.Input.Manipulations.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_AA74EF67426BAF5BD5BD" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_AA74EF67426BAF5BD5BD" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\System.Xaml.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_080D0D67F42FED8B7F5A" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_080D0D67F42FED8B7F5A" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\UIAutomationClient.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_AED85704A657F7F38420" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_AED85704A657F7F38420" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\UIAutomationClientSideProviders.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F14BE73D2430B32FB302" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_F14BE73D2430B32FB302" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\UIAutomationProvider.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_20CDB2D070D67F9AFB41" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_20CDB2D070D67F9AFB41" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\UIAutomationTypes.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F880A1AE17A7409490DA" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_F880A1AE17A7409490DA" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\WindowsBase.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C3399833224E98CC6A02" Directory="dir_C697295FFABA6889" Guid="*">
+        <File Id="fil_C3399833224E98CC6A02" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\pt-BR\WindowsFormsIntegration.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4DDC21BBEDC6F951F328" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_4DDC21BBEDC6F951F328" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ReachFramework.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_491F4489B60E58C66258" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_491F4489B60E58C66258" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\RedShot.deps.json" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_85B0143EDEECCFA02620" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_85B0143EDEECCFA02620" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\RedShot.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A536408DA5117ECAE24F" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_A536408DA5117ECAE24F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\RedShot.exe" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_79745DB007C68D1394D6" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_79745DB007C68D1394D6" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\RedShot.pdb" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9CA742BE5B6F19B4845E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_9CA742BE5B6F19B4845E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\RedShot.runtimeconfig.json" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4D78CD536CBE101A46F7" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_4D78CD536CBE101A46F7" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\Microsoft.VisualBasic.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FBDA38ADB2D592EC0EF8" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_FBDA38ADB2D592EC0EF8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\PresentationCore.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8737AB844881DA0A880D" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_8737AB844881DA0A880D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\PresentationFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_2396FEF681A263380057" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_2396FEF681A263380057" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\PresentationUI.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_BC364665AFC5BF74A81B" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_BC364665AFC5BF74A81B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\ReachFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9F0762F3D914CD51701C" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_9F0762F3D914CD51701C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\System.Windows.Controls.Ribbon.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FCC641F14A75FF2824CA" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_FCC641F14A75FF2824CA" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\System.Windows.Forms.Design.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_EA22CA4E190101109BEB" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_EA22CA4E190101109BEB" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\System.Windows.Forms.Primitives.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E0CE2275B586FE410B81" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_E0CE2275B586FE410B81" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\System.Windows.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B1A440739EB239696BAD" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_B1A440739EB239696BAD" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\System.Windows.Input.Manipulations.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_52F8701952FE004A2EDC" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_52F8701952FE004A2EDC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\System.Xaml.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_04E7ED37C4BED154E29C" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_04E7ED37C4BED154E29C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\UIAutomationClient.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_917543487281502633E9" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_917543487281502633E9" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\UIAutomationClientSideProviders.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1E90BC26EC8DAF51ED35" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_1E90BC26EC8DAF51ED35" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\UIAutomationProvider.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FE0DDA13638903E72602" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_FE0DDA13638903E72602" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\UIAutomationTypes.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E21E942DBD14D3A6CF6D" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_E21E942DBD14D3A6CF6D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\WindowsBase.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_BE016FCA85703662ED02" Directory="dir_67B8B1C4FEDB2E38" Guid="*">
+        <File Id="fil_BE016FCA85703662ED02" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\ru\WindowsFormsIntegration.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3C982C1A24B5B3B98692" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_3C982C1A24B5B3B98692" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.AppContext.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B57923D8357852D12032" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_B57923D8357852D12032" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Buffers.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E93BC90F2E9D310D0593" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_E93BC90F2E9D310D0593" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.CodeDom.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_022E8441A48C1A99BA39" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_022E8441A48C1A99BA39" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Collections.Concurrent.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D9DA5A49A0F4193BB836" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_D9DA5A49A0F4193BB836" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Collections.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_90B989D8770D81F28149" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_90B989D8770D81F28149" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Collections.Immutable.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D48EB36EC1BEC7133CD4" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_D48EB36EC1BEC7133CD4" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Collections.NonGeneric.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_01EE8E0891C89443A59D" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_01EE8E0891C89443A59D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Collections.Specialized.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_91A06EBB07AAD9630441" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_91A06EBB07AAD9630441" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.ComponentModel.Annotations.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_5A8F8B2C932631EC9725" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_5A8F8B2C932631EC9725" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.ComponentModel.DataAnnotations.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_767AFF8E6428ED34F6CD" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_767AFF8E6428ED34F6CD" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.ComponentModel.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A70A11D02D73145CDB14" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_A70A11D02D73145CDB14" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.ComponentModel.EventBasedAsync.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A5D2F3AB0405B372F3F4" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_A5D2F3AB0405B372F3F4" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.ComponentModel.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_61D95A71F9EC1CDE3323" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_61D95A71F9EC1CDE3323" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.ComponentModel.TypeConverter.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_0D1E984ABF08C09C57DF" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_0D1E984ABF08C09C57DF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Configuration.ConfigurationManager.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_BEE76A347F7051AA8CCE" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_BEE76A347F7051AA8CCE" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Configuration.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FA6D70819D60C68E1F11" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_FA6D70819D60C68E1F11" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Console.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_007AC00C4121442FD962" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_007AC00C4121442FD962" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Core.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_12145EB98B107054ED29" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_12145EB98B107054ED29" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Data.Common.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_73A1AF2B01A55AB038F8" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_73A1AF2B01A55AB038F8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Data.DataSetExtensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F8DEEE5CE11052970A18" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_F8DEEE5CE11052970A18" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Data.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3DB1701D47FCD77D30B6" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_3DB1701D47FCD77D30B6" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Design.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E3F99EE0512BA5DFDC0B" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_E3F99EE0512BA5DFDC0B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Diagnostics.Contracts.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A84C5E6D475CA9F60D97" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_A84C5E6D475CA9F60D97" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Diagnostics.Debug.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_54CF420CC0A4CA822739" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_54CF420CC0A4CA822739" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Diagnostics.DiagnosticSource.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_AEF50E33C346DDF33ECC" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_AEF50E33C346DDF33ECC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Diagnostics.EventLog.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_5309C832BB8E9FBCBBA8" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_5309C832BB8E9FBCBBA8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Diagnostics.EventLog.Messages.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3A9304B41CEDD43978DC" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_3A9304B41CEDD43978DC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Diagnostics.FileVersionInfo.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_948B1AFB71690186E4A2" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_948B1AFB71690186E4A2" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Diagnostics.PerformanceCounter.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_03E542B0F896E774495A" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_03E542B0F896E774495A" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Diagnostics.Process.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_2576F906EC4A3E03AC40" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_2576F906EC4A3E03AC40" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Diagnostics.StackTrace.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B4E73C973DD7398FC598" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_B4E73C973DD7398FC598" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Diagnostics.TextWriterTraceListener.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1530E928BE752126FFB1" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_1530E928BE752126FFB1" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Diagnostics.Tools.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C8D822C94E9CA9E902DA" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_C8D822C94E9CA9E902DA" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Diagnostics.TraceSource.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_22CB66140072192EB167" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_22CB66140072192EB167" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Diagnostics.Tracing.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FA388B1DA53A2FFDB44E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_FA388B1DA53A2FFDB44E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.DirectoryServices.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3042DA4E439568298EF4" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_3042DA4E439568298EF4" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_5EA814AA021AD7EDD3BB" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_5EA814AA021AD7EDD3BB" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Drawing.Common.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_99089185BAEDA642D808" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_99089185BAEDA642D808" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Drawing.Design.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_07439737352CDDE3AAD1" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_07439737352CDDE3AAD1" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Drawing.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7EEE9FA41B3052CB0CE7" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_7EEE9FA41B3052CB0CE7" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Drawing.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8C64ED8CE384F63EC99E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_8C64ED8CE384F63EC99E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Dynamic.Runtime.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_34F3E46A131252F77E30" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_34F3E46A131252F77E30" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Formats.Asn1.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9462212A7EEA471C1DDB" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_9462212A7EEA471C1DDB" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Formats.Nrbf.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_6A60993DE65C351040E6" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_6A60993DE65C351040E6" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Formats.Tar.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3CC23A306A62ECF7FE44" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_3CC23A306A62ECF7FE44" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Globalization.Calendars.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_BA8A1B8DC12C359317B0" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_BA8A1B8DC12C359317B0" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Globalization.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4E24A76038F96A6FD3A8" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_4E24A76038F96A6FD3A8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Globalization.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F2AA26026E307B05D3FD" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_F2AA26026E307B05D3FD" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.Compression.Brotli.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_765581AA27D64D2B8BD0" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_765581AA27D64D2B8BD0" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.Compression.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9A52E3ECF88DCBA8DB8E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_9A52E3ECF88DCBA8DB8E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.Compression.FileSystem.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_320549EDC30EB5179E2E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_320549EDC30EB5179E2E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.Compression.Native.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_6315870CDCA106FD7F89" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_6315870CDCA106FD7F89" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.Compression.ZipFile.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A3247FF96D74DAF00050" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_A3247FF96D74DAF00050" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4A0B2A9F7E11A4871084" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_4A0B2A9F7E11A4871084" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.FileSystem.AccessControl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_100358A0B5CC568FAA96" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_100358A0B5CC568FAA96" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.FileSystem.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4AB7DE1A45DF851C8134" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_4AB7DE1A45DF851C8134" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.FileSystem.DriveInfo.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_780C8D31214DD333B502" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_780C8D31214DD333B502" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.FileSystem.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3F436B95D991B2150A16" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_3F436B95D991B2150A16" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.FileSystem.Watcher.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D69A8CBDA80A343CD5D7" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_D69A8CBDA80A343CD5D7" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.IsolatedStorage.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1A74E9D12CD151C6835B" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_1A74E9D12CD151C6835B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.MemoryMappedFiles.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FFB54EF1ABD4F687A0DB" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_FFB54EF1ABD4F687A0DB" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.Packaging.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_76D9C2F9791104975676" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_76D9C2F9791104975676" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.Pipelines.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_400279551ED03E1F6FB7" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_400279551ED03E1F6FB7" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.Pipes.AccessControl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_13512FF2A3B0D623C2F0" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_13512FF2A3B0D623C2F0" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.Pipes.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_21457F4510063A72533D" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_21457F4510063A72533D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.IO.UnmanagedMemoryStream.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_0FC3F986CE0B275C4827" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_0FC3F986CE0B275C4827" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Linq.AsyncEnumerable.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_AE86B97E947E9E89D066" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_AE86B97E947E9E89D066" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Linq.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_264D56D43A3D1FD86172" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_264D56D43A3D1FD86172" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Linq.Expressions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_CA8A064F39D70F2556DD" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_CA8A064F39D70F2556DD" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Linq.Parallel.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C4DC81B82108EF53AF90" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_C4DC81B82108EF53AF90" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Linq.Queryable.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8DF31C6101B3ED6D750B" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_8DF31C6101B3ED6D750B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Memory.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E9DE9E70B63E228064A5" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_E9DE9E70B63E228064A5" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1C022D4B6BD1AD96592C" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_1C022D4B6BD1AD96592C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.Http.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_84C5484003C076E1835C" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_84C5484003C076E1835C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.Http.Json.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_84BBFACEE7531E3F4A07" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_84BBFACEE7531E3F4A07" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.HttpListener.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DCB9441334727163EFAB" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_DCB9441334727163EFAB" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.Mail.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_74D32602131B62A4FFFC" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_74D32602131B62A4FFFC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.NameResolution.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_64FD7F57FD14A3C9FCCA" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_64FD7F57FD14A3C9FCCA" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.NetworkInformation.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F5DCE6B4781E620080FB" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_F5DCE6B4781E620080FB" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.Ping.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_2C8CE1924B6DA6A60041" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_2C8CE1924B6DA6A60041" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_55BBA1C9BE5585A9E860" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_55BBA1C9BE5585A9E860" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.Quic.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_97B3908FA1040AC7CDC1" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_97B3908FA1040AC7CDC1" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.Requests.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D5E299DAD7456D1DD654" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_D5E299DAD7456D1DD654" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.Security.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F3B7F60940E4EAC24D85" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_F3B7F60940E4EAC24D85" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.ServerSentEvents.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_BE5CC96B2854F7696FBA" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_BE5CC96B2854F7696FBA" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.ServicePoint.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_ECED0E9A6B395AAD14FF" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_ECED0E9A6B395AAD14FF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.Sockets.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9EF21B54C051369C6A23" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_9EF21B54C051369C6A23" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.WebClient.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_603E9615FBB1EB05AB84" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_603E9615FBB1EB05AB84" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.WebHeaderCollection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7961762EB62A10296AE0" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_7961762EB62A10296AE0" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.WebProxy.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_2907C9936581D04023E2" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_2907C9936581D04023E2" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.WebSockets.Client.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_AA244076A3F82E45E9E2" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_AA244076A3F82E45E9E2" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Net.WebSockets.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8CC71F010201C5AB4038" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_8CC71F010201C5AB4038" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Numerics.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C7D483225824EAE67547" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_C7D483225824EAE67547" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Numerics.Vectors.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F1A0A3B932B8D5008EE5" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_F1A0A3B932B8D5008EE5" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.ObjectModel.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_62A44C05CE811E6EC430" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_62A44C05CE811E6EC430" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Printing.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7E5E254570C6D241964E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_7E5E254570C6D241964E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Private.CoreLib.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_0DF07A55C3B822E285E6" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_0DF07A55C3B822E285E6" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Private.DataContractSerialization.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_0088497A583165E7B95F" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_0088497A583165E7B95F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Private.Uri.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F9F0BA1C5CC842C9B574" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_F9F0BA1C5CC842C9B574" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Private.Windows.Core.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_EB37E052A2D74956A5BF" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_EB37E052A2D74956A5BF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Private.Windows.GdiPlus.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A26495E1C4355601C4FB" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_A26495E1C4355601C4FB" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Private.Xml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_35CE2189BA5EAC43A349" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_35CE2189BA5EAC43A349" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Private.Xml.Linq.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D006B9B2A4D3959E77C0" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_D006B9B2A4D3959E77C0" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Reflection.DispatchProxy.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8EA3D04836F4F263E789" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_8EA3D04836F4F263E789" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Reflection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_CCABDE8EAA2A2EE0CEBE" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_CCABDE8EAA2A2EE0CEBE" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Reflection.Emit.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B6AE6FA49E52ADF2D58D" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_B6AE6FA49E52ADF2D58D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Reflection.Emit.ILGeneration.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DF7D50944C2EAF45C90F" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_DF7D50944C2EAF45C90F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Reflection.Emit.Lightweight.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A42524CF81F0493CB270" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_A42524CF81F0493CB270" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Reflection.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FBA67C893F8837CD4DB1" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_FBA67C893F8837CD4DB1" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Reflection.Metadata.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7C379E9F9A37B960DCAA" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_7C379E9F9A37B960DCAA" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Reflection.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1F5F7937FED446B98D0C" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_1F5F7937FED446B98D0C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Reflection.TypeExtensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_700F04917CE6A41E849B" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_700F04917CE6A41E849B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Resources.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_2BDED64FED2A63B8AD90" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_2BDED64FED2A63B8AD90" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Resources.Reader.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B2AA3881EEC0FE111FDC" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_B2AA3881EEC0FE111FDC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Resources.ResourceManager.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_31E2648DAAE8253B4431" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_31E2648DAAE8253B4431" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Resources.Writer.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E0B7CD76587BC7F0DB19" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_E0B7CD76587BC7F0DB19" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.CompilerServices.Unsafe.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_58E4EA719F3BF0F9C738" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_58E4EA719F3BF0F9C738" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.CompilerServices.VisualC.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B43F33041B1C7259BB67" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_B43F33041B1C7259BB67" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_6B4CDCB040742C06FD23" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_6B4CDCB040742C06FD23" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3FBF6A3C23B221D6D5B4" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_3FBF6A3C23B221D6D5B4" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.Handles.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_2982A6CD0B9D1F1345FA" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_2982A6CD0B9D1F1345FA" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.InteropServices.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_197BE34126F7DEEF8362" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_197BE34126F7DEEF8362" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.InteropServices.JavaScript.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_32886D4DF304582B6491" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_32886D4DF304582B6491" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.InteropServices.RuntimeInformation.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7CC900F48011F48FCF05" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_7CC900F48011F48FCF05" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.Intrinsics.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_50D124C117EA865E5CE7" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_50D124C117EA865E5CE7" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.Loader.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_EEDCA40ED370FF2434FA" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_EEDCA40ED370FF2434FA" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.Numerics.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_396FE20AAAF33F41B3E4" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_396FE20AAAF33F41B3E4" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.Serialization.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3300C40B81B2B81CA388" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_3300C40B81B2B81CA388" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.Serialization.Formatters.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_420239963C58C7DB231E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_420239963C58C7DB231E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.Serialization.Json.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_05A9633A9A3458284E3E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_05A9633A9A3458284E3E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.Serialization.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4FA1B5B60A0565207738" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_4FA1B5B60A0565207738" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Runtime.Serialization.Xml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_69D52E9EABD9FB645555" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_69D52E9EABD9FB645555" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.AccessControl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F3D79A0C513FA73E0F05" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_F3D79A0C513FA73E0F05" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Claims.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D69468C154DCB82623FF" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_D69468C154DCB82623FF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Cryptography.Algorithms.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_48276083677667802D16" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_48276083677667802D16" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Cryptography.Cng.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_11C05970B8F6BAE34C30" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_11C05970B8F6BAE34C30" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Cryptography.Csp.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_009C7B4D48284BA163D9" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_009C7B4D48284BA163D9" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Cryptography.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3302405A5BB8FBE16516" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_3302405A5BB8FBE16516" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Cryptography.Encoding.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_26E38F2330188EE15C49" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_26E38F2330188EE15C49" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Cryptography.OpenSsl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B627125E0D89382B35C1" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_B627125E0D89382B35C1" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Cryptography.Pkcs.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_929301473C9A83D26E98" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_929301473C9A83D26E98" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Cryptography.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_57DF053899EDCEDFAD68" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_57DF053899EDCEDFAD68" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Cryptography.ProtectedData.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4C63B0665EB0C8136764" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_4C63B0665EB0C8136764" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Cryptography.X509Certificates.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A6AFBB5A93C166E58266" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_A6AFBB5A93C166E58266" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Cryptography.Xml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_5096702C60D70DD13A51" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_5096702C60D70DD13A51" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_40C0A20B54087BF00914" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_40C0A20B54087BF00914" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Permissions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D06EC00F27BDC5BA782E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_D06EC00F27BDC5BA782E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Principal.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_CD36FA267676A273408B" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_CD36FA267676A273408B" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.Principal.Windows.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_271BCFDC337AFC29C6A5" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_271BCFDC337AFC29C6A5" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Security.SecureString.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_5CE466A69D3120E43619" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_5CE466A69D3120E43619" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.ServiceModel.Web.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_747871EBE84C3EA5D6DC" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_747871EBE84C3EA5D6DC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.ServiceProcess.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_930E2BD04A638E5932C7" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_930E2BD04A638E5932C7" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Text.Encoding.CodePages.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_BBE64D9A6593F3DDF055" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_BBE64D9A6593F3DDF055" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Text.Encoding.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_85565A263C835174D100" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_85565A263C835174D100" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Text.Encoding.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E6B4B6B428562F8EE52D" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_E6B4B6B428562F8EE52D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Text.Encodings.Web.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_322853B3A877971FB8EA" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_322853B3A877971FB8EA" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Text.Json.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FF14091BEB11622C42DF" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_FF14091BEB11622C42DF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Text.RegularExpressions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_087608395BFCDDA576D3" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_087608395BFCDDA576D3" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Threading.AccessControl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E36CF6BA908A4B8AD3B4" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_E36CF6BA908A4B8AD3B4" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Threading.Channels.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8023845656E83B86C729" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_8023845656E83B86C729" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Threading.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E50C44C6F879E79FB0F5" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_E50C44C6F879E79FB0F5" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Threading.Overlapped.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_5EC6377164E7A4167BCF" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_5EC6377164E7A4167BCF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Threading.Tasks.Dataflow.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B5F9233355F667B5E287" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_B5F9233355F667B5E287" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Threading.Tasks.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_00F9349BB20A30B1A3E7" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_00F9349BB20A30B1A3E7" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Threading.Tasks.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_79419A919154CFD62908" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_79419A919154CFD62908" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Threading.Tasks.Parallel.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D814484AC7BBEBEDF85D" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_D814484AC7BBEBEDF85D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Threading.Thread.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_18C3FBC40BD649CA39E8" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_18C3FBC40BD649CA39E8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Threading.ThreadPool.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FDB287DA608173A7676E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_FDB287DA608173A7676E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Threading.Timer.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_2B4F4291B7E9DB12B255" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_2B4F4291B7E9DB12B255" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Transactions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A37469D93788ECAF7217" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_A37469D93788ECAF7217" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Transactions.Local.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D747135C0A35CAD76D44" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_D747135C0A35CAD76D44" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.ValueTuple.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A2D6F715772E266B7138" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_A2D6F715772E266B7138" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Web.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_60550C1F3E85CD2B2C98" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_60550C1F3E85CD2B2C98" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Web.HttpUtility.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E2E865497A9818DC2BA9" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_E2E865497A9818DC2BA9" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Windows.Controls.Ribbon.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C5E856BC80A12F9FFA63" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_C5E856BC80A12F9FFA63" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Windows.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_2B1C27087017071D645D" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_2B1C27087017071D645D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Windows.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E1BBFFBC8C28315B98BB" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_E1BBFFBC8C28315B98BB" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Windows.Forms.Design.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FD5E663F59AD355F694E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_FD5E663F59AD355F694E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Windows.Forms.Design.Editors.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_379D8E36A31718234DBF" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_379D8E36A31718234DBF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Windows.Forms.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_6ED11B231FF1B8620C5A" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_6ED11B231FF1B8620C5A" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Windows.Forms.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_436CCA725D31AC87D1F8" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_436CCA725D31AC87D1F8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Windows.Input.Manipulations.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FEE57173C126A781EA77" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_FEE57173C126A781EA77" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Windows.Presentation.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_6C6F882965A3FB84F1D9" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_6C6F882965A3FB84F1D9" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Windows.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_CE108286CA70DC59C4EA" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_CE108286CA70DC59C4EA" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Xaml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FE0B68E0EB1749EF9037" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_FE0B68E0EB1749EF9037" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Xml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4FF7073736754B12A52E" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_4FF7073736754B12A52E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Xml.Linq.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_B7EDBE513DCF46D6061C" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_B7EDBE513DCF46D6061C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Xml.ReaderWriter.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_AE0407DBC798767C4AD5" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_AE0407DBC798767C4AD5" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Xml.Serialization.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_0A239DCF4A59F1CB8AC0" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_0A239DCF4A59F1CB8AC0" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Xml.XDocument.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F702DFFABB75F4B09139" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_F702DFFABB75F4B09139" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Xml.XmlDocument.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8C90661A1F820CA9D843" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_8C90661A1F820CA9D843" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Xml.XmlSerializer.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_43E6936F3E20BF6E8A61" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_43E6936F3E20BF6E8A61" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Xml.XPath.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1657EB0B04E805685FBD" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_1657EB0B04E805685FBD" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\System.Xml.XPath.XDocument.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DAC48C61D890ACF66757" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_DAC48C61D890ACF66757" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\Microsoft.VisualBasic.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_05BC58ECAEA2EDD88837" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_05BC58ECAEA2EDD88837" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\PresentationCore.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_FE87DF258DAB62C3AF03" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_FE87DF258DAB62C3AF03" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\PresentationFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_89D0917045C210B3B3E8" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_89D0917045C210B3B3E8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\PresentationUI.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_735757D51999512A5E4C" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_735757D51999512A5E4C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\ReachFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_965B55A08FDDE65BD84A" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_965B55A08FDDE65BD84A" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\System.Windows.Controls.Ribbon.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_AA28E7943C22B48AFA75" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_AA28E7943C22B48AFA75" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\System.Windows.Forms.Design.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_0E96B45F60C060A583C1" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_0E96B45F60C060A583C1" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\System.Windows.Forms.Primitives.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_605B4C62B3D96DB2CF12" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_605B4C62B3D96DB2CF12" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\System.Windows.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_08F8FF069A52075EEDFF" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_08F8FF069A52075EEDFF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\System.Windows.Input.Manipulations.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_EFCA1A76CA795F68CDB7" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_EFCA1A76CA795F68CDB7" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\System.Xaml.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_2FD8955A4E8018D39534" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_2FD8955A4E8018D39534" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\UIAutomationClient.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E3AC530D0F8A2EBCB78E" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_E3AC530D0F8A2EBCB78E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\UIAutomationClientSideProviders.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_256B827459641E1538FE" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_256B827459641E1538FE" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\UIAutomationProvider.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_7DA6C3ED9970498EF4E1" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_7DA6C3ED9970498EF4E1" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\UIAutomationTypes.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8ECB8991A0BB4502618E" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_8ECB8991A0BB4502618E" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\WindowsBase.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9217816221447002C28C" Directory="dir_D9E83874D260F2F1" Guid="*">
+        <File Id="fil_9217816221447002C28C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\tr\WindowsFormsIntegration.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C056F237A73F04A5C8F8" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_C056F237A73F04A5C8F8" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\UIAutomationClient.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_D7BA41045A2CAFF40ED2" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_D7BA41045A2CAFF40ED2" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\UIAutomationClientSideProviders.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_AD23B57AC71C5EDEC4F6" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_AD23B57AC71C5EDEC4F6" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\UIAutomationProvider.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9781DC02441B62F83314" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_9781DC02441B62F83314" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\UIAutomationTypes.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E7F79F8A039604B90D8F" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_E7F79F8A039604B90D8F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\vcruntime140_cor3.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_72B5F24AA5521BCF99AD" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_72B5F24AA5521BCF99AD" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\WindowsBase.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_AF49EFC0E277700E8A34" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_AF49EFC0E277700E8A34" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\WindowsFormsIntegration.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_48E949A08042F875785F" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_48E949A08042F875785F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\WinRT.Runtime.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_062ED94C65F8BD2D91E3" Directory="INSTALLFOLDER" Guid="*">
+        <File Id="fil_062ED94C65F8BD2D91E3" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\wpfgfx_cor3.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_40F76B14C90F5B59D160" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_40F76B14C90F5B59D160" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\Microsoft.VisualBasic.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_76F68AEB0B772954CC46" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_76F68AEB0B772954CC46" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\PresentationCore.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8E3B5262DA9833036B22" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_8E3B5262DA9833036B22" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\PresentationFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_0F66EBD4896AAACD7E3F" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_0F66EBD4896AAACD7E3F" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\PresentationUI.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_807FF967D0D893D92526" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_807FF967D0D893D92526" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\ReachFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_42E8BDD33BC278914B3A" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_42E8BDD33BC278914B3A" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\System.Windows.Controls.Ribbon.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_0B8B5DDB8FF96193A7BE" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_0B8B5DDB8FF96193A7BE" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\System.Windows.Forms.Design.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_1B4011BD25CDCA03FB2A" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_1B4011BD25CDCA03FB2A" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\System.Windows.Forms.Primitives.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_F541FFCF6B069CB56E2D" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_F541FFCF6B069CB56E2D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\System.Windows.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A2D3FEDA735833BFE1CE" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_A2D3FEDA735833BFE1CE" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\System.Windows.Input.Manipulations.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_237E9658FFA3E780CF7A" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_237E9658FFA3E780CF7A" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\System.Xaml.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_48BDAA300C7BA3633596" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_48BDAA300C7BA3633596" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\UIAutomationClient.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_4633A42B9CCFFB2F5E20" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_4633A42B9CCFFB2F5E20" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\UIAutomationClientSideProviders.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_234BE2366668A7051A4D" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_234BE2366668A7051A4D" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\UIAutomationProvider.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A09FEFB3DC4D723C5BAA" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_A09FEFB3DC4D723C5BAA" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\UIAutomationTypes.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_46A8E0124F3EFB65B0EE" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_46A8E0124F3EFB65B0EE" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\WindowsBase.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_834DEA0F900C87249F0C" Directory="dir_CFCC93558CB387A4" Guid="*">
+        <File Id="fil_834DEA0F900C87249F0C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hans\WindowsFormsIntegration.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_3C008DBFCF9657433FAE" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_3C008DBFCF9657433FAE" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\Microsoft.VisualBasic.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8ADFBC0F9AFF586A3768" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_8ADFBC0F9AFF586A3768" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\PresentationCore.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_5FD96F8E040B48C7DCAF" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_5FD96F8E040B48C7DCAF" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\PresentationFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_2E8C7115E26031C29E41" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_2E8C7115E26031C29E41" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\PresentationUI.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_6177A968822746B43969" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_6177A968822746B43969" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\ReachFramework.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_A8730D19EA8F5031B295" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_A8730D19EA8F5031B295" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\System.Windows.Controls.Ribbon.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_CF247951D336ED339D79" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_CF247951D336ED339D79" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\System.Windows.Forms.Design.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_6F0AC77811A50A83E872" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_6F0AC77811A50A83E872" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\System.Windows.Forms.Primitives.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_774087E80D6B20C84DAC" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_774087E80D6B20C84DAC" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\System.Windows.Forms.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_547044070308FBE2B5B9" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_547044070308FBE2B5B9" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\System.Windows.Input.Manipulations.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_C1D57175AF956379BE8C" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_C1D57175AF956379BE8C" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\System.Xaml.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_393DE4A7A31906EC8007" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_393DE4A7A31906EC8007" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\UIAutomationClient.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E3E8986458CBF91CD5E7" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_E3E8986458CBF91CD5E7" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\UIAutomationClientSideProviders.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_8238B67D83EF43EE5963" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_8238B67D83EF43EE5963" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\UIAutomationProvider.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_BB38B3232204E90595D4" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_BB38B3232204E90595D4" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\UIAutomationTypes.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_E4908CE4B098886C5630" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_E4908CE4B098886C5630" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\WindowsBase.resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_9F405060A799B9FB9119" Directory="dir_806CE4D1F184D84D" Guid="*">
+        <File Id="fil_9F405060A799B9FB9119" Source="C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64\zh-Hant\WindowsFormsIntegration.resources.dll" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

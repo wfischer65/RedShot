@@ -1,0 +1,134 @@
+RedShot Increment-Version.ps1 V1.1.1
+Start: 2026-08-22 19:02:41.823
+
+Version erhoeht:
+  Alt: 1.0.5
+  Neu: 1.0.6
+
+**********************
+PowerShell transcript start
+Start time: 20260822190242
+Username: WEIMAR\wfisc
+RunAs User: WEIMAR\wfisc
+Configuration Name: 
+Machine: WEIMAR (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -File C:\Users\wfisc\source\repos\RedShot\Build\Release.ps1
+Process ID: 29012
+PSVersion: 7.6.5
+PSEdition: Core
+GitCommitId: 7.6.5
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+RedShot Release.ps1 V1.3.0
+PowerShell 7.6.5 (Core)
+Build-Log: C:\Users\wfisc\source\repos\RedShot\Build\BuildRelease.log
+
+
+============================================================
+1. RedShot-Projekt ermitteln
+============================================================
+Projekt: C:\Users\wfisc\source\repos\RedShot\RedShot.csproj
+
+============================================================
+2. Version synchronisieren
+============================================================
+
+Versionssynchronisierung:
+  Projektversion: 1.0.6
+  MSI-Version:     1.0.6
+
+Versionssynchronisierung erfolgreich abgeschlossen.
+Zentrale Version: 1.0.6
+MSI-Version:      1.0.6
+Hauptdatei:       RedShot.exe
+Release-Ordner:   C:\Users\wfisc\source\repos\RedShot\Release\1.0.6
+
+============================================================
+3. Alte Build-Ausgaben bereinigen
+============================================================
+
+============================================================
+4. WPF wiederherstellen und veröffentlichen
+============================================================
+RuntimeIdentifiers: win-x64
+Restore fuer Runtime: win-x64
+
+
+Publish fuer Runtime: win-x64
+
+Publish erfolgreich: C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64
+
+============================================================
+5. MSI-Dateiliste erzeugen
+============================================================
+Erzeugt: C:\Users\wfisc\source\repos\RedShot\MSI\PublishedFiles.wxs
+
+============================================================
+6. Release-Projektmappe erzeugen
+============================================================
+Die Vorlage "Projektmappendatei" wurde erfolgreich erstellt.
+
+Das Projekt "RedShot.csproj" wurde der Projektmappe hinzugef├╝gt.
+Das Projekt "MSI\RedShot.Setup.wixproj" wurde der Projektmappe hinzugef├╝gt.
+Release-Projektmappe: C:\Users\wfisc\source\repos\RedShot\RedShot.Release.slnx
+  WPF enthalten:      True
+  MSI-Setup enthalten: True
+  UWP enthalten:      False
+
+============================================================
+7. MSI bauen
+============================================================
+
+Gebautes MSI:    C:\Users\wfisc\source\repos\RedShot\MSI\bin\x64\Release\RedShot.msi
+
+============================================================
+8. Build-Log abschliessen
+============================================================
+Build-Log wird fuer Sources.zip geschlossen.
+**********************
+PowerShell transcript end
+End time: 20260822190314
+**********************
+**********************
+PowerShell transcript start
+Start time: 20260822190314
+Username: WEIMAR\wfisc
+RunAs User: WEIMAR\wfisc
+Configuration Name: 
+Machine: WEIMAR (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -File C:\Users\wfisc\source\repos\RedShot\Build\Release.ps1
+Process ID: 29012
+PSVersion: 7.6.5
+PSEdition: Core
+GitCommitId: 7.6.5
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Logging fortgesetzt.
+
+
+============================================================
+Build erfolgreich
+============================================================
+Release-Ordner:  C:\Users\wfisc\source\repos\RedShot\Release\1.0.6
+MSI:             C:\Users\wfisc\source\repos\RedShot\Release\1.0.6\RedShot.msi
+Sources:         C:\Users\wfisc\source\repos\RedShot\Release\1.0.6\Sources.zip
+Build-Log:       C:\Users\wfisc\source\repos\RedShot\Release\1.0.6\BuildRelease.log
+Release-Solution: C:\Users\wfisc\source\repos\RedShot\RedShot.Release.slnx
+Publish:         C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64
+
+Hinweis: Publish bleibt absichtlich unter artifacts\publish erhalten,
+damit sich der Inhalt des MSI leicht kontrollieren lässt.
+**********************
+PowerShell transcript end
+End time: 20260822190314
+**********************

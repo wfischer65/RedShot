@@ -1,0 +1,10 @@
+<Project Sdk="WixToolset.Sdk/5.0.2">
+  <PropertyGroup>
+    <OutputType>Package</OutputType>
+    <OutputName>RedShot</OutputName>
+    <ProductVersion Condition="'$(ProductVersion)' == ''">1.0.0</ProductVersion>
+    <MainExe Condition="'$(MainExe)' == ''">RedShot.exe</MainExe>
+    <Platform>x64</Platform>
+    <DefineConstants>$(DefineConstants);ProductVersion=$(ProductVersion);MainExe=$(MainExe)</DefineConstants>
+  </PropertyGroup>
+</Project>

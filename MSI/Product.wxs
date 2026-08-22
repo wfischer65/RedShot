@@ -1,0 +1,42 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package
+      Name="RedShot"
+      Manufacturer="WoF"
+      Version="$(var.ProductVersion)"
+      UpgradeCode="8D1340DF-90D2-4B26-B5F3-82E7AF294978"
+      Scope="perMachine">
+
+    <MajorUpgrade DowngradeErrorMessage="Eine neuere Version von RedShot ist bereits installiert." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="INSTALLFOLDER" Name="RedShot" />
+    </StandardDirectory>
+
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="ApplicationProgramsFolder" Name="RedShot" />
+    </StandardDirectory>
+
+    <Component Id="ApplicationShortcut" Directory="ApplicationProgramsFolder" Guid="*">
+      <Shortcut
+          Id="ApplicationStartMenuShortcut"
+          Name="RedShot"
+          Description="RedShot Screenshot Tool"
+          Target="[INSTALLFOLDER]$(var.MainExe)"
+          WorkingDirectory="INSTALLFOLDER" />
+      <RemoveFolder Id="RemoveApplicationProgramsFolder" On="uninstall" />
+      <RegistryValue
+          Root="HKCU"
+          Key="Software\WoF\RedShot"
+          Name="StartMenuShortcut"
+          Type="integer"
+          Value="1"
+          KeyPath="yes" />
+    </Component>
+
+    <Feature Id="MainFeature" Title="RedShot" Level="1">
+      <ComponentGroupRef Id="PublishedFiles" />
+      <ComponentRef Id="ApplicationShortcut" />
+    </Feature>
+  </Package>
+</Wix>
