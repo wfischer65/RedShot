@@ -11,7 +11,7 @@ param(
 )
 
 # Interne Version des Build-Skripts (unabhaengig von der RedShot-Programmversion)
-$ReleaseScriptVersion = '1.3.0'
+$ReleaseScriptVersion = '1.4.0'
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
@@ -416,6 +416,55 @@ Write-Host ''
 Start-BuildTranscript -Append
 Write-Host "Logging fortgesetzt."
 Write-Host ""
+
+Write-Step '10. Git Commit und Push'
+
+if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+    throw 'git wurde nicht gefunden.'
+}
+
+$gitDir = Join-Path $Root '.git'
+if (-not (Test-Path -LiteralPath $gitDir)) {
+    throw "Kein Git-Repository gefunden: $Root"
+}
+
+Push-Location $Root
+try {
+    & git add -A
+    if ($LASTEXITCODE -ne 0) {
+        throw "git add fehlgeschlagen ($LASTEXITCODE)."
+    }
+
+    $changes = & git status --porcelain
+    if ($LASTEXITCODE -ne 0) {
+        throw "git status fehlgeschlagen ($LASTEXITCODE)."
+    }
+
+    if ($changes) {
+        $commitMessage = "Release $($Meta.ProductVersion)"
+        Write-Host "Commit:          $commitMessage"
+
+        & git commit -m $commitMessage
+        if ($LASTEXITCODE -ne 0) {
+            throw "git commit fehlgeschlagen ($LASTEXITCODE)."
+        }
+    }
+    else {
+        Write-Host 'Keine Aenderungen fuer einen Commit vorhanden.'
+    }
+
+    Write-Host 'Push:            origin main'
+    & git push origin main
+    if ($LASTEXITCODE -ne 0) {
+        throw "git push fehlgeschlagen ($LASTEXITCODE)."
+    }
+}
+finally {
+    Pop-Location
+}
+
+Write-Host 'Git erfolgreich abgeschlossen.'
+Write-Host ''
 
 Write-Step 'Build erfolgreich'
 Write-Host "Release-Ordner:  $ReleaseDir"
