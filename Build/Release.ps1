@@ -11,7 +11,7 @@ param(
 )
 
 # Interne Version des Build-Skripts (unabhaengig von der RedShot-Programmversion)
-$ReleaseScriptVersion = '1.4.0'
+$ReleaseScriptVersion = '1.4.1'
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
@@ -413,10 +413,6 @@ Write-Host "Sources:         $sourceZip"
 Write-Host "Dateien:         $($sourceFiles.Count)"
 Write-Host ''
 
-Start-BuildTranscript -Append
-Write-Host "Logging fortgesetzt."
-Write-Host ""
-
 Write-Step '10. Git Commit und Push'
 
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
@@ -441,7 +437,14 @@ try {
     }
 
     if ($changes) {
+        Write-Host ''
+        $gitNote = Read-Host 'Git-Note (optional)'
+
         $commitMessage = "Release $($Meta.ProductVersion)"
+        if (-not [string]::IsNullOrWhiteSpace($gitNote)) {
+            $commitMessage += " - $($gitNote.Trim())"
+        }
+
         Write-Host "Commit:          $commitMessage"
 
         & git commit -m $commitMessage
@@ -480,11 +483,3 @@ if (-not $KeepPublish) {
     Write-Host 'damit sich der Inhalt des MSI leicht kontrollieren lässt.'
 }
 
-Stop-BuildTranscript
-
-if (Get-Variable -Name releaseLog -Scope Script -ErrorAction SilentlyContinue) {
-    if (-not [string]::IsNullOrWhiteSpace($releaseLog) -and
-        (Test-Path -LiteralPath $BuildLogPath -PathType Leaf)) {
-        Copy-Item -LiteralPath $BuildLogPath -Destination $releaseLog -Force
-    }
-}

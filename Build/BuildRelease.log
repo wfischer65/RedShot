@@ -1,19 +1,19 @@
 RedShot Increment-Version.ps1 V1.1.1
-Start: 2026-08-22 19:21:24.335
+Start: 2026-08-22 19:24:46.733
 
 Version erhoeht:
-  Alt: 1.0.6
-  Neu: 1.0.7
+  Alt: 1.0.7
+  Neu: 1.0.8
 
 **********************
 PowerShell transcript start
-Start time: 20260822192124
+Start time: 20260822192447
 Username: WEIMAR\wfisc
 RunAs User: WEIMAR\wfisc
 Configuration Name: 
 Machine: WEIMAR (Microsoft Windows NT 10.0.26200.0)
 Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -File C:\Users\wfisc\source\repos\RedShot\Build\Release.ps1
-Process ID: 27528
+Process ID: 15464
 PSVersion: 7.6.5
 PSEdition: Core
 GitCommitId: 7.6.5
@@ -24,7 +24,7 @@ PSRemotingProtocolVersion: 2.4
 SerializationVersion: 1.1.0.1
 WSManStackVersion: 3.0
 **********************
-RedShot Release.ps1 V1.4.0
+RedShot Release.ps1 V1.4.1
 PowerShell 7.6.5 (Core)
 Build-Log: C:\Users\wfisc\source\repos\RedShot\Build\BuildRelease.log
 
@@ -39,14 +39,14 @@ Projekt: C:\Users\wfisc\source\repos\RedShot\RedShot.csproj
 ============================================================
 
 Versionssynchronisierung:
-  Projektversion: 1.0.7
-  MSI-Version:     1.0.7
+  Projektversion: 1.0.8
+  MSI-Version:     1.0.8
 
 Versionssynchronisierung erfolgreich abgeschlossen.
-Zentrale Version: 1.0.7
-MSI-Version:      1.0.7
+Zentrale Version: 1.0.8
+MSI-Version:      1.0.8
 Hauptdatei:       RedShot.exe
-Release-Ordner:   C:\Users\wfisc\source\repos\RedShot\Release\1.0.7
+Release-Ordner:   C:\Users\wfisc\source\repos\RedShot\Release\1.0.8
 
 ============================================================
 3. Alte Build-Ausgaben bereinigen
@@ -92,29 +92,5 @@ Gebautes MSI:    C:\Users\wfisc\source\repos\RedShot\MSI\bin\x64\Release\RedShot
 Build-Log wird fuer Sources.zip geschlossen.
 **********************
 PowerShell transcript end
-End time: 20260822192159
+End time: 20260822192519
 **********************
-**********************
-PowerShell transcript start
-Start time: 20260822192159
-Username: WEIMAR\wfisc
-RunAs User: WEIMAR\wfisc
-Configuration Name: 
-Machine: WEIMAR (Microsoft Windows NT 10.0.26200.0)
-Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -File C:\Users\wfisc\source\repos\RedShot\Build\Release.ps1
-Process ID: 27528
-PSVersion: 7.6.5
-PSEdition: Core
-GitCommitId: 7.6.5
-OS: Microsoft Windows 10.0.26200
-Platform: Win32NT
-PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
-PSRemotingProtocolVersion: 2.4
-SerializationVersion: 1.1.0.1
-WSManStackVersion: 3.0
-**********************
-Logging fortgesetzt.
-
-
-============================================================
-10. Git Commit und Push
