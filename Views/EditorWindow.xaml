@@ -27,9 +27,20 @@
         </Style>
     </Window.Resources>
 
-    <DockPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="36"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
         <!-- Obere horizontale Iconleiste -->
-        <ToolBar DockPanel.Dock="Top"
+        <ToolBar Grid.Row="0"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="2"
                  Height="34"
                  Padding="2"
                  ToolBarTray.IsLocked="True">
@@ -76,17 +87,24 @@
                     Content="⚙"
                     ToolTip="Einstellungen"
                     Click="NotImplemented_Click"/>
+            <Separator/>
+            <Button Style="{StaticResource ToolbarButtonStyle}"
+                    Content="ⓘ"
+                    ToolTip="Über RedShot"
+                    Click="About_Click"/>
         </ToolBar>
 
-        <!-- Linke vertikale Werkzeugleiste -->
-        <Border DockPanel.Dock="Left"
-                Width="36"
+        <!-- Linke Werkzeugleiste: absichtlich KEINE WPF-ToolBar,
+             damit es keinerlei Overflow-/Aufklappmechanismus gibt. -->
+        <Border Grid.Row="1"
+                Grid.Column="0"
                 Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
                 BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"
                 BorderThickness="0,0,1,0"
                 Padding="3,2">
             <StackPanel Orientation="Vertical"
-                        HorizontalAlignment="Center">
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top">
                 <ToggleButton x:Name="SelectToolButton"
                               Style="{StaticResource ToolToggleButtonStyle}"
                               Content="↖"
@@ -150,30 +168,38 @@
                               ToolTip="Effekte"
                               Tag="Effects"
                               Click="Tool_Click"/>
-                <Separator Margin="2,3" Width="24" Height="1"/>
+
+                <Border Height="1"
+                        Width="24"
+                        Margin="2,4"
+                        Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+
                 <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
                               Content="⌗"
                               ToolTip="Zuschneiden"
                               Tag="Crop"
                               Click="Tool_Click"/>
                 <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
-                              Content="◩"
+                              Content="↻"
                               ToolTip="Drehen"
                               Tag="Rotate"
                               Click="Tool_Click"/>
                 <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
-                              Content="↔"
+                              Content="↙↗"
+                              FontSize="11"
                               ToolTip="Größe ändern"
                               Tag="Resize"
                               Click="Tool_Click"/>
             </StackPanel>
         </Border>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Auto"
+        <ScrollViewer Grid.Row="1"
+                      Grid.Column="1"
+                      HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto"
                       Background="#222">
             <Image x:Name="PreviewImage"
                    Stretch="None"/>
         </ScrollViewer>
-    </DockPanel>
+    </Grid>
 </Window>

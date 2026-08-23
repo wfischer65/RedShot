@@ -1,10 +1,12 @@
 ﻿using WPFSaveFileDialog = Microsoft.Win32.SaveFileDialog;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using WPFClipboard = System.Windows.Clipboard;
 using System.Windows.Media.Imaging;
+using WPFMessageBox = System.Windows.MessageBox;
 
 namespace RedShot.Views;
 
@@ -17,6 +19,11 @@ public partial class EditorWindow : Window
         InitializeComponent();
 
         _bitmap = bitmap;
+
+        var version = Assembly.GetExecutingAssembly().GetName().Version;
+        if (version is not null)
+            Title = $"RedShot {version.Major}.{version.Minor}.{version.Build}";
+
         PreviewImage.Source =
             BitmapToBitmapSource(bitmap);
     }
@@ -128,6 +135,22 @@ public partial class EditorWindow : Window
         _bitmap.Save(
             dialog.FileName,
             format);
+    }
+
+
+    private void About_Click(object sender, RoutedEventArgs e)
+    {
+        var version = Assembly.GetExecutingAssembly().GetName().Version;
+        var versionText = version is null
+            ? "unbekannt"
+            : $"{version.Major}.{version.Minor}.{version.Build}";
+
+        WPFMessageBox.Show(
+            this,
+            $"RedShot\nVersion {versionText}\n\nEditor-Layout: VerticalToolbar-Grid",
+            "Über RedShot",
+            MessageBoxButton.OK,
+            MessageBoxImage.Information);
     }
 
     private void Close_Click(

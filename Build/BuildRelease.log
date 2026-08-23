@@ -1,5 +1,5 @@
 RedShot Increment-Version.ps1 V1.1.1
-Start: 2026-08-24 00:40:25.263
+Start: 2026-08-24 00:48:09.364
 
 Version erhoeht:
   Alt: 1.0.11
@@ -7,13 +7,13 @@ Version erhoeht:
 
 **********************
 PowerShell transcript start
-Start time: 20260824004025
+Start time: 20260824004809
 Username: WEIMAR\wfisc
 RunAs User: WEIMAR\wfisc
 Configuration Name: 
 Machine: WEIMAR (Microsoft Windows NT 10.0.26200.0)
 Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -File C:\Users\wfisc\source\repos\RedShot\Build\Release.ps1
-Process ID: 24284
+Process ID: 6840
 PSVersion: 7.6.5
 PSEdition: Core
 GitCommitId: 7.6.5
@@ -92,5 +92,5 @@ Gebautes MSI:    C:\Users\wfisc\source\repos\RedShot\MSI\bin\x64\Release\RedShot
 Build-Log wird fuer das Sources-Archiv geschlossen.
 **********************
 PowerShell transcript end
-End time: 20260824004057
+End time: 20260824004841
 **********************
