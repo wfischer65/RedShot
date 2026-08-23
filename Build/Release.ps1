@@ -11,7 +11,7 @@ param(
 )
 
 # Interne Version des Build-Skripts (unabhaengig von der RedShot-Programmversion)
-$ReleaseScriptVersion = '1.4.1'
+$ReleaseScriptVersion = '1.4.2'
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
@@ -350,16 +350,16 @@ $finalMsi = Join-Path $ReleaseDir $finalName
 Copy-Item $builtMsi.FullName $finalMsi -Force
 
 Write-Step '8. Build-Log abschliessen'
-Write-Host "Build-Log wird fuer Sources.zip geschlossen."
+Write-Host "Build-Log wird fuer das Sources-Archiv geschlossen."
 Stop-BuildTranscript
 
 $releaseLog = Join-Path $ReleaseDir 'BuildRelease.log'
 Copy-Item -LiteralPath $BuildLogPath -Destination $releaseLog -Force
 Write-Host "Build-Log:       $releaseLog"
 
-Write-Step '9. Sources.zip erzeugen'
+Write-Step '9. Sources-Archiv erzeugen'
 
-$sourceZip = Join-Path $ReleaseDir 'Sources.zip'
+$sourceZip = Join-Path $ReleaseDir "Sources_$($Meta.ProductVersion).zip"
 if (Test-Path -LiteralPath $sourceZip) {
     Remove-Item -LiteralPath $sourceZip -Force
 }

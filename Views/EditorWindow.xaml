@@ -5,19 +5,165 @@
         Width="1000"
         Height="700"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="ToolbarButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="28"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Focusable" Value="False"/>
+        </Style>
+
+        <Style x:Key="ToolToggleButtonStyle" TargetType="ToggleButton">
+            <Setter Property="Width" Value="28"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Focusable" Value="False"/>
+        </Style>
+    </Window.Resources>
+
     <DockPanel>
-        <ToolBar DockPanel.Dock="Top">
-            <Button Content="Kopieren"
-                    Click="Copy_Click"
-                    Padding="10,4"/>
+        <!-- Obere horizontale Iconleiste -->
+        <ToolBar DockPanel.Dock="Top"
+                 Height="34"
+                 Padding="2"
+                 ToolBarTray.IsLocked="True">
+            <Button Style="{StaticResource ToolbarButtonStyle}"
+                    Content="💾"
+                    ToolTip="Speichern unter..."
+                    Click="SaveAs_Click"/>
+            <Button Style="{StaticResource ToolbarButtonStyle}"
+                    Content="▣"
+                    ToolTip="In Zwischenablage kopieren"
+                    Click="Copy_Click"/>
+            <Button Style="{StaticResource ToolbarButtonStyle}"
+                    Content="🖨"
+                    ToolTip="Drucken"
+                    Click="NotImplemented_Click"/>
             <Separator/>
-            <Button Content="Speichern unter..."
-                    Click="SaveAs_Click"
-                    Padding="10,4"/>
+            <Button Style="{StaticResource ToolbarButtonStyle}"
+                    Content="⛔"
+                    ToolTip="Löschen"
+                    Click="NotImplemented_Click"/>
+            <Button Style="{StaticResource ToolbarButtonStyle}"
+                    Content="✂"
+                    ToolTip="Ausschneiden"
+                    Click="NotImplemented_Click"/>
+            <Button Style="{StaticResource ToolbarButtonStyle}"
+                    Content="▧"
+                    ToolTip="Bild öffnen/einfügen"
+                    Click="NotImplemented_Click"/>
+            <Button Style="{StaticResource ToolbarButtonStyle}"
+                    Content="📋"
+                    ToolTip="Einfügen"
+                    Click="NotImplemented_Click"/>
             <Separator/>
-            <Button Content="Schließen"
-                    Click="Close_Click"
-                    Padding="10,4"/>
+            <Button Style="{StaticResource ToolbarButtonStyle}"
+                    Content="↶"
+                    ToolTip="Rückgängig"
+                    Click="NotImplemented_Click"/>
+            <Button Style="{StaticResource ToolbarButtonStyle}"
+                    Content="↷"
+                    ToolTip="Wiederholen"
+                    Click="NotImplemented_Click"/>
+            <Separator/>
+            <Button Style="{StaticResource ToolbarButtonStyle}"
+                    Content="⚙"
+                    ToolTip="Einstellungen"
+                    Click="NotImplemented_Click"/>
+        </ToolBar>
+
+        <!-- Linke vertikale Werkzeugleiste -->
+        <ToolBar DockPanel.Dock="Left"
+                 Width="34"
+                 Padding="2"
+                 ToolBarTray.IsLocked="True"
+                 Band="0"
+                 BandIndex="0">
+            <ToggleButton x:Name="SelectToolButton"
+                          Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="↖"
+                          ToolTip="Auswahl"
+                          Tag="Select"
+                          IsChecked="True"
+                          Click="Tool_Click"/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="□"
+                          ToolTip="Rechteck"
+                          Tag="Rectangle"
+                          Click="Tool_Click"/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="○"
+                          ToolTip="Ellipse"
+                          Tag="Ellipse"
+                          Click="Tool_Click"/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="╲"
+                          ToolTip="Linie"
+                          Tag="Line"
+                          Click="Tool_Click"/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="↘"
+                          ToolTip="Pfeil"
+                          Tag="Arrow"
+                          Click="Tool_Click"/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="✎"
+                          ToolTip="Freihand"
+                          Tag="Freehand"
+                          Click="Tool_Click"/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="T"
+                          ToolTip="Text"
+                          Tag="Text"
+                          Click="Tool_Click"/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="▱"
+                          ToolTip="Sprechblase"
+                          Tag="SpeechBubble"
+                          Click="Tool_Click"/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="①"
+                          ToolTip="Nummerierung"
+                          Tag="Counter"
+                          Click="Tool_Click"/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="abc"
+                          FontSize="10"
+                          ToolTip="Hervorheben"
+                          Tag="Highlight"
+                          Click="Tool_Click"/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="▧"
+                          ToolTip="Bild einfügen"
+                          Tag="Image"
+                          Click="Tool_Click"/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="✵"
+                          ToolTip="Effekte"
+                          Tag="Effects"
+                          Click="Tool_Click"/>
+            <Separator/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="⌗"
+                          ToolTip="Zuschneiden"
+                          Tag="Crop"
+                          Click="Tool_Click"/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="◩"
+                          ToolTip="Drehen"
+                          Tag="Rotate"
+                          Click="Tool_Click"/>
+            <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                          Content="↔"
+                          ToolTip="Größe ändern"
+                          Tag="Resize"
+                          Click="Tool_Click"/>
         </ToolBar>
 
         <ScrollViewer HorizontalScrollBarVisibility="Auto"

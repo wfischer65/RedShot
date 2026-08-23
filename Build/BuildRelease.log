@@ -1,19 +1,19 @@
 RedShot Increment-Version.ps1 V1.1.1
-Start: 2026-08-22 19:30:49.979
+Start: 2026-08-24 00:16:13.603
 
 Version erhoeht:
-  Alt: 1.0.8
-  Neu: 1.0.9
+  Alt: 1.0.9
+  Neu: 1.0.10
 
 **********************
 PowerShell transcript start
-Start time: 20260822193050
+Start time: 20260824001613
 Username: WEIMAR\wfisc
 RunAs User: WEIMAR\wfisc
 Configuration Name: 
 Machine: WEIMAR (Microsoft Windows NT 10.0.26200.0)
 Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -File C:\Users\wfisc\source\repos\RedShot\Build\Release.ps1
-Process ID: 32152
+Process ID: 6484
 PSVersion: 7.6.5
 PSEdition: Core
 GitCommitId: 7.6.5
@@ -24,7 +24,7 @@ PSRemotingProtocolVersion: 2.4
 SerializationVersion: 1.1.0.1
 WSManStackVersion: 3.0
 **********************
-RedShot Release.ps1 V1.4.1
+RedShot Release.ps1 V1.4.2
 PowerShell 7.6.5 (Core)
 Build-Log: C:\Users\wfisc\source\repos\RedShot\Build\BuildRelease.log
 
@@ -39,14 +39,14 @@ Projekt: C:\Users\wfisc\source\repos\RedShot\RedShot.csproj
 ============================================================
 
 Versionssynchronisierung:
-  Projektversion: 1.0.9
-  MSI-Version:     1.0.9
+  Projektversion: 1.0.10
+  MSI-Version:     1.0.10
 
 Versionssynchronisierung erfolgreich abgeschlossen.
-Zentrale Version: 1.0.9
-MSI-Version:      1.0.9
+Zentrale Version: 1.0.10
+MSI-Version:      1.0.10
 Hauptdatei:       RedShot.exe
-Release-Ordner:   C:\Users\wfisc\source\repos\RedShot\Release\1.0.9
+Release-Ordner:   C:\Users\wfisc\source\repos\RedShot\Release\1.0.10
 
 ============================================================
 3. Alte Build-Ausgaben bereinigen
@@ -89,8 +89,8 @@ Gebautes MSI:    C:\Users\wfisc\source\repos\RedShot\MSI\bin\x64\Release\RedShot
 ============================================================
 8. Build-Log abschliessen
 ============================================================
-Build-Log wird fuer Sources.zip geschlossen.
+Build-Log wird fuer das Sources-Archiv geschlossen.
 **********************
 PowerShell transcript end
-End time: 20260822193123
+End time: 20260824001650
 **********************

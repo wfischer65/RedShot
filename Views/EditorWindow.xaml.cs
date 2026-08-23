@@ -2,6 +2,7 @@
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 using WPFClipboard = System.Windows.Clipboard;
 using System.Windows.Media.Imaging;
 
@@ -41,6 +42,43 @@ public partial class EditorWindow : Window
         source.Freeze();
 
         return source;
+    }
+
+
+    private void Tool_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is not ToggleButton selected)
+            return;
+
+        foreach (var button in FindVisualChildren<ToggleButton>(this))
+        {
+            if (button.Tag is not null)
+                button.IsChecked = ReferenceEquals(button, selected);
+        }
+    }
+
+    private void NotImplemented_Click(object sender, RoutedEventArgs e)
+    {
+        // Der Button ist bewusst bereits in der Oberfläche vorhanden.
+        // Die jeweilige Funktion wird in den nächsten Schritten ergänzt.
+    }
+
+    private static IEnumerable<T> FindVisualChildren<T>(DependencyObject parent)
+        where T : DependencyObject
+    {
+        if (parent is null)
+            yield break;
+
+        for (var i = 0; i < System.Windows.Media.VisualTreeHelper.GetChildrenCount(parent); i++)
+        {
+            var child = System.Windows.Media.VisualTreeHelper.GetChild(parent, i);
+
+            if (child is T typedChild)
+                yield return typedChild;
+
+            foreach (var descendant in FindVisualChildren<T>(child))
+                yield return descendant;
+        }
     }
 
     private void Copy_Click(
