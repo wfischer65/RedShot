@@ -79,12 +79,12 @@
         </ToolBar>
 
         <!-- Linke vertikale Werkzeugleiste -->
-        <ToolBar DockPanel.Dock="Left"
-                 Width="34"
-                 Padding="2"
-                 ToolBarTray.IsLocked="True"
-                 Band="0"
-                 BandIndex="0">
+        <ToolBarTray DockPanel.Dock="Left"
+                     Orientation="Vertical"
+                     IsLocked="True">
+            <ToolBar Width="34"
+                     Padding="2"
+                     ToolBar.OverflowMode="Never">
             <ToggleButton x:Name="SelectToolButton"
                           Style="{StaticResource ToolToggleButtonStyle}"
                           Content="↖"
@@ -164,7 +164,8 @@
                           ToolTip="Größe ändern"
                           Tag="Resize"
                           Click="Tool_Click"/>
-        </ToolBar>
+            </ToolBar>
+        </ToolBarTray>
 
         <ScrollViewer HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto"
