@@ -103,12 +103,12 @@
                           Tag="Ellipse"
                           Click="Tool_Click"/>
             <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
-                          Content="╲"
+                          Content="╱"
                           ToolTip="Linie"
                           Tag="Line"
                           Click="Tool_Click"/>
             <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
-                          Content="↘"
+                          Content="↗"
                           ToolTip="Pfeil"
                           Tag="Arrow"
                           Click="Tool_Click"/>
