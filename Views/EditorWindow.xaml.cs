@@ -215,7 +215,7 @@ public partial class EditorWindow : Window
         element.Shape.Width = Math.Max(0, bounds.Width);
         element.Shape.Height = Math.Max(0, bounds.Height);
         if (ReferenceEquals(_selectedRectangle, element))
-            UpdateSelectionHandles();
+            PositionSelectionHandles();
     }
 
     private void UpdateSelectionHandles()
@@ -233,6 +233,35 @@ public partial class EditorWindow : Window
         AddHandle(ResizeDirection.Bottom, b.Left + b.Width / 2, b.Bottom, WPFCursors.SizeNS);
         AddHandle(ResizeDirection.BottomLeft, b.Left, b.Bottom, WPFCursors.SizeNESW);
         AddHandle(ResizeDirection.Left, b.Left, b.Top + b.Height / 2, WPFCursors.SizeWE);
+    }
+
+    private void PositionSelectionHandles()
+    {
+        if (_selectedRectangle is null || SelectionCanvas.Children.Count == 0)
+            return;
+
+        var b = _selectedRectangle.Bounds;
+        foreach (var child in SelectionCanvas.Children.OfType<Thumb>())
+        {
+            if (child.Tag is not ResizeDirection direction)
+                continue;
+
+            var (x, y) = direction switch
+            {
+                ResizeDirection.TopLeft => (b.Left, b.Top),
+                ResizeDirection.Top => (b.Left + b.Width / 2, b.Top),
+                ResizeDirection.TopRight => (b.Right, b.Top),
+                ResizeDirection.Right => (b.Right, b.Top + b.Height / 2),
+                ResizeDirection.BottomRight => (b.Right, b.Bottom),
+                ResizeDirection.Bottom => (b.Left + b.Width / 2, b.Bottom),
+                ResizeDirection.BottomLeft => (b.Left, b.Bottom),
+                ResizeDirection.Left => (b.Left, b.Top + b.Height / 2),
+                _ => (b.Left, b.Top)
+            };
+
+            Canvas.SetLeft(child, x - HandleSize / 2);
+            Canvas.SetTop(child, y - HandleSize / 2);
+        }
     }
 
     private void AddHandle(ResizeDirection direction, double x, double y, WPFCursor cursor)
@@ -344,7 +373,7 @@ public partial class EditorWindow : Window
         var version = Assembly.GetExecutingAssembly().GetName().Version;
         var versionText = version is null ? "unbekannt" : $"{version.Major}.{version.Minor}.{version.Build}";
         WPFMessageBox.Show(this,
-            $"RedShot\nVersion {versionText}\n\nEditor: Rectangle-Crosshair-3px",
+            $"RedShot\nVersion {versionText}\n\nEditor: Rectangle-ResizeHandles-V2",
             "Ueber RedShot", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
