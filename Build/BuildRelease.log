@@ -1,19 +1,19 @@
 RedShot Increment-Version.ps1 V1.1.1
-Start: 2026-09-01 23:02:50.025
+Start: 2026-09-01 23:09:16.443
 
 Version erhoeht:
-  Alt: 1.0.16
-  Neu: 1.0.17
+  Alt: 1.0.17
+  Neu: 1.0.18
 
 **********************
 PowerShell transcript start
-Start time: 20260901230250
+Start time: 20260901230916
 Username: WEIMAR\wfisc
 RunAs User: WEIMAR\wfisc
 Configuration Name: 
 Machine: WEIMAR (Microsoft Windows NT 10.0.26200.0)
 Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -File C:\Users\wfisc\source\repos\RedShot\Build\Release.ps1
-Process ID: 12144
+Process ID: 33264
 PSVersion: 7.6.5
 PSEdition: Core
 GitCommitId: 7.6.5
@@ -39,14 +39,14 @@ Projekt: C:\Users\wfisc\source\repos\RedShot\RedShot.csproj
 ============================================================
 
 Versionssynchronisierung:
-  Projektversion: 1.0.17
-  MSI-Version:     1.0.17
+  Projektversion: 1.0.18
+  MSI-Version:     1.0.18
 
 Versionssynchronisierung erfolgreich abgeschlossen.
-Zentrale Version: 1.0.17
-MSI-Version:      1.0.17
+Zentrale Version: 1.0.18
+MSI-Version:      1.0.18
 Hauptdatei:       RedShot.exe
-Release-Ordner:   C:\Users\wfisc\source\repos\RedShot\Release\1.0.17
+Release-Ordner:   C:\Users\wfisc\source\repos\RedShot\Release\1.0.18
 
 ============================================================
 3. Laufenden RedShot-Prozess beenden
@@ -97,5 +97,5 @@ Gebautes MSI:    C:\Users\wfisc\source\repos\RedShot\MSI\bin\x64\Release\RedShot
 Build-Log wird fuer das Sources-Archiv geschlossen.
 **********************
 PowerShell transcript end
-End time: 20260901230333
+End time: 20260901230958
 **********************

@@ -15,6 +15,8 @@ using WPFCursor = System.Windows.Input.Cursor;
 using WPFCursors = System.Windows.Input.Cursors;
 using WPFMouseEventArgs = System.Windows.Input.MouseEventArgs;
 using WPFPoint = System.Windows.Point;
+using WPFKey = System.Windows.Input.Key;
+using WPFKeyEventArgs = System.Windows.Input.KeyEventArgs;
 using WPFMessageBox = System.Windows.MessageBox;
 using WPFRectangle = System.Windows.Shapes.Rectangle;
 using WPFSaveFileDialog = Microsoft.Win32.SaveFileDialog;
@@ -509,11 +511,23 @@ public partial class EditorWindow : Window
         var version = Assembly.GetExecutingAssembly().GetName().Version;
         var versionText = version is null ? "unbekannt" : $"{version.Major}.{version.Minor}.{version.Build}";
         WPFMessageBox.Show(this,
-            $"RedShot\nVersion {versionText}\n\nEditor: Rectangle-StyleToolbar-V1",
+            $"RedShot\nVersion {versionText}\n\nEditor: Rectangle-DeleteKey-V1",
             "Ueber RedShot", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
     private void Close_Click(object sender, RoutedEventArgs e) => Close();
+
+    protected override void OnPreviewKeyDown(WPFKeyEventArgs e)
+    {
+        if (e.Key == WPFKey.Delete && _selectedRectangle is not null)
+        {
+            RemoveRectangle(_selectedRectangle);
+            e.Handled = true;
+            return;
+        }
+
+        base.OnPreviewKeyDown(e);
+    }
 
     protected override void OnClosed(EventArgs e)
     {
