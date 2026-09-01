@@ -11,7 +11,7 @@ param(
 )
 
 # Interne Version des Build-Skripts (unabhaengig von der RedShot-Programmversion)
-$ReleaseScriptVersion = '1.4.2'
+$ReleaseScriptVersion = '1.4.3'
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
@@ -151,6 +151,34 @@ function Ensure-RuntimeIdentifier([System.IO.FileInfo]$Project, [string]$Runtime
     }
 }
 
+function Stop-RunningApplication([string]$ProcessName) {
+    $runningProcesses = @(Get-Process -Name $ProcessName -ErrorAction SilentlyContinue)
+    if ($runningProcesses.Count -eq 0) {
+        Write-Host "Kein laufender $ProcessName-Prozess gefunden."
+        return
+    }
+
+    Write-Host "Laufende $ProcessName-Prozesse werden beendet: $($runningProcesses.Id -join ', ')"
+
+    foreach ($process in $runningProcesses) {
+        $process.CloseMainWindow() | Out-Null
+    }
+
+    Start-Sleep -Milliseconds 500
+
+    $remainingProcesses = @(Get-Process -Name $ProcessName -ErrorAction SilentlyContinue)
+    foreach ($process in $remainingProcesses) {
+        Stop-Process -Id $process.Id -Force -ErrorAction Stop
+        $process.WaitForExit(5000) | Out-Null
+    }
+
+    if (Get-Process -Name $ProcessName -ErrorAction SilentlyContinue) {
+        throw "$ProcessName konnte vor dem Release nicht vollstaendig beendet werden."
+    }
+
+    Write-Host "$ProcessName wurde beendet. Der Release verwendet damit keinen alten laufenden Programmstand."
+}
+
 function New-PublishedFilesWxs([string]$SourceRoot, [string]$DestinationFile) {
     $files = Get-ChildItem -LiteralPath $SourceRoot -File -Recurse | Sort-Object FullName
     if (-not $files) { throw "Publish-Verzeichnis ist leer: $SourceRoot" }
@@ -271,12 +299,15 @@ $ReleaseDir = Join-Path $ReleaseRoot $Meta.ProductVersion
 New-Item -ItemType Directory -Path $ReleaseDir -Force | Out-Null
 Write-Host "Release-Ordner:   $ReleaseDir"
 
-Write-Step '3. Alte Build-Ausgaben bereinigen'
+Write-Step '3. Laufenden RedShot-Prozess beenden'
+Stop-RunningApplication -ProcessName $Meta.AssemblyName
+
+Write-Step '4. Alte Build-Ausgaben bereinigen'
 if (Test-Path $PublishDir) { Remove-Item $PublishDir -Recurse -Force }
 if (Test-Path $GeneratedWxs) { Remove-Item $GeneratedWxs -Force }
 New-Item -ItemType Directory -Path $PublishDir -Force | Out-Null
 
-Write-Step '4. WPF wiederherstellen und veröffentlichen'
+Write-Step '5. WPF wiederherstellen und veröffentlichen'
 Ensure-RuntimeIdentifier -Project $AppProject -RuntimeIdentifier $Runtime
 $selfContainedText = if ($SelfContained) { 'true' } else { 'false' }
 
@@ -304,11 +335,11 @@ if (-not (Test-Path $mainExePath)) {
 }
 Write-Host "Publish erfolgreich: $PublishDir"
 
-Write-Step '5. MSI-Dateiliste erzeugen'
+Write-Step '6. MSI-Dateiliste erzeugen'
 New-PublishedFilesWxs -SourceRoot $PublishDir -DestinationFile $GeneratedWxs
 Write-Host "Erzeugt: $GeneratedWxs"
 
-Write-Step '6. Release-Projektmappe erzeugen'
+Write-Step '7. Release-Projektmappe erzeugen'
 if (Test-Path $ReleaseSolution) { Remove-Item $ReleaseSolution -Force }
 Push-Location $Root
 try {
@@ -325,7 +356,7 @@ Write-Host '  WPF enthalten:      True'
 Write-Host '  MSI-Setup enthalten: True'
 Write-Host '  UWP enthalten:      False'
 
-Write-Step '7. MSI bauen'
+Write-Step '8. MSI bauen'
 & dotnet build $SetupProject `
     -c $Configuration `
     -p:ProductVersion=$($Meta.ProductVersion) `
@@ -349,7 +380,7 @@ $finalName = 'RedShot.msi'
 $finalMsi = Join-Path $ReleaseDir $finalName
 Copy-Item $builtMsi.FullName $finalMsi -Force
 
-Write-Step '8. Build-Log abschliessen'
+Write-Step '9. Build-Log abschliessen'
 Write-Host "Build-Log wird fuer das Sources-Archiv geschlossen."
 Stop-BuildTranscript
 
@@ -357,7 +388,7 @@ $releaseLog = Join-Path $ReleaseDir 'BuildRelease.log'
 Copy-Item -LiteralPath $BuildLogPath -Destination $releaseLog -Force
 Write-Host "Build-Log:       $releaseLog"
 
-Write-Step '9. Sources-Archiv erzeugen'
+Write-Step '10. Sources-Archiv erzeugen'
 
 $sourceZip = Join-Path $ReleaseDir "Sources_$($Meta.ProductVersion).zip"
 if (Test-Path -LiteralPath $sourceZip) {
@@ -413,7 +444,7 @@ Write-Host "Sources:         $sourceZip"
 Write-Host "Dateien:         $($sourceFiles.Count)"
 Write-Host ''
 
-Write-Step '10. Git Commit und Push'
+Write-Step '11. Git Commit und Push'
 
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
     throw 'git wurde nicht gefunden.'

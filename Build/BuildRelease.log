@@ -1,19 +1,19 @@
 RedShot Increment-Version.ps1 V1.1.1
-Start: 2026-08-24 00:48:09.364
+Start: 2026-09-01 21:47:45.031
 
 Version erhoeht:
-  Alt: 1.0.11
-  Neu: 1.0.12
+  Alt: 1.0.13
+  Neu: 1.0.14
 
 **********************
 PowerShell transcript start
-Start time: 20260824004809
+Start time: 20260901214745
 Username: WEIMAR\wfisc
 RunAs User: WEIMAR\wfisc
 Configuration Name: 
 Machine: WEIMAR (Microsoft Windows NT 10.0.26200.0)
 Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -File C:\Users\wfisc\source\repos\RedShot\Build\Release.ps1
-Process ID: 6840
+Process ID: 30612
 PSVersion: 7.6.5
 PSEdition: Core
 GitCommitId: 7.6.5
@@ -24,7 +24,7 @@ PSRemotingProtocolVersion: 2.4
 SerializationVersion: 1.1.0.1
 WSManStackVersion: 3.0
 **********************
-RedShot Release.ps1 V1.4.2
+RedShot Release.ps1 V1.4.3
 PowerShell 7.6.5 (Core)
 Build-Log: C:\Users\wfisc\source\repos\RedShot\Build\BuildRelease.log
 
@@ -39,21 +39,27 @@ Projekt: C:\Users\wfisc\source\repos\RedShot\RedShot.csproj
 ============================================================
 
 Versionssynchronisierung:
-  Projektversion: 1.0.12
-  MSI-Version:     1.0.12
+  Projektversion: 1.0.14
+  MSI-Version:     1.0.14
 
 Versionssynchronisierung erfolgreich abgeschlossen.
-Zentrale Version: 1.0.12
-MSI-Version:      1.0.12
+Zentrale Version: 1.0.14
+MSI-Version:      1.0.14
 Hauptdatei:       RedShot.exe
-Release-Ordner:   C:\Users\wfisc\source\repos\RedShot\Release\1.0.12
+Release-Ordner:   C:\Users\wfisc\source\repos\RedShot\Release\1.0.14
 
 ============================================================
-3. Alte Build-Ausgaben bereinigen
+3. Laufenden RedShot-Prozess beenden
+============================================================
+Laufende RedShot-Prozesse werden beendet: 22752
+RedShot wurde beendet. Der Release verwendet damit keinen alten laufenden Programmstand.
+
+============================================================
+4. Alte Build-Ausgaben bereinigen
 ============================================================
 
 ============================================================
-4. WPF wiederherstellen und veröffentlichen
+5. WPF wiederherstellen und veröffentlichen
 ============================================================
 RuntimeIdentifiers: win-x64
 Restore fuer Runtime: win-x64
@@ -64,12 +70,12 @@ Publish fuer Runtime: win-x64
 Publish erfolgreich: C:\Users\wfisc\source\repos\RedShot\artifacts\publish\win-x64
 
 ============================================================
-5. MSI-Dateiliste erzeugen
+6. MSI-Dateiliste erzeugen
 ============================================================
 Erzeugt: C:\Users\wfisc\source\repos\RedShot\MSI\PublishedFiles.wxs
 
 ============================================================
-6. Release-Projektmappe erzeugen
+7. Release-Projektmappe erzeugen
 ============================================================
 Die Vorlage "Projektmappendatei" wurde erfolgreich erstellt.
 
@@ -81,16 +87,17 @@ Release-Projektmappe: C:\Users\wfisc\source\repos\RedShot\RedShot.Release.slnx
   UWP enthalten:      False
 
 ============================================================
-7. MSI bauen
+8. MSI bauen
 ============================================================
 
+Erstellen von Erfolgreich in 38,3s
 Gebautes MSI:    C:\Users\wfisc\source\repos\RedShot\MSI\bin\x64\Release\RedShot.msi
 
 ============================================================
-8. Build-Log abschliessen
+9. Build-Log abschliessen
 ============================================================
 Build-Log wird fuer das Sources-Archiv geschlossen.
 **********************
 PowerShell transcript end
-End time: 20260824004841
+End time: 20260901214830
 **********************
