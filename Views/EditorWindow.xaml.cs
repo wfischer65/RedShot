@@ -36,7 +36,7 @@ public partial class EditorWindow : Window
     private bool _isMoving;
 
     // Diese Werte werden spaeter durch das Farb-/Transparenz-Popup gesetzt.
-    private WPFColor _foregroundColor = Colors.Red;
+    private WPFColor _foregroundColor = WPFColor.FromRgb(255, 0, 0);
     private WPFColor _backgroundColor = WPFColor.FromArgb(128, 255, 255, 0);
 
     public EditorWindow(DrawingBitmap bitmap)
@@ -86,7 +86,11 @@ public partial class EditorWindow : Window
                     : string.Equals(button.Tag as string, tool, StringComparison.Ordinal);
         }
 
-        EditorSurface.Cursor = tool == "Rectangle" ? WPFCursors.Cross : WPFCursors.Arrow;
+        var cursor = tool == "Rectangle" ? WPFCursors.Cross : WPFCursors.Arrow;
+        EditorSurface.Cursor = cursor;
+        AnnotationCanvas.Cursor = cursor;
+        SelectionCanvas.Cursor = cursor;
+        Mouse.OverrideCursor = tool == "Rectangle" ? WPFCursors.Cross : null;
         UpdateSelectionHandles();
     }
 
@@ -165,7 +169,7 @@ public partial class EditorWindow : Window
         var shape = new WPFRectangle
         {
             Stroke = new SolidColorBrush(_foregroundColor),
-            StrokeThickness = 2,
+            StrokeThickness = 3,
             Fill = new SolidColorBrush(_backgroundColor),
             Cursor = WPFCursors.SizeAll
         };
@@ -340,7 +344,7 @@ public partial class EditorWindow : Window
         var version = Assembly.GetExecutingAssembly().GetName().Version;
         var versionText = version is null ? "unbekannt" : $"{version.Major}.{version.Minor}.{version.Build}";
         WPFMessageBox.Show(this,
-            $"RedShot\nVersion {versionText}\n\nEditor: EditableRectangle-V1",
+            $"RedShot\nVersion {versionText}\n\nEditor: Rectangle-Crosshair-3px",
             "Ueber RedShot", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
@@ -348,6 +352,7 @@ public partial class EditorWindow : Window
 
     protected override void OnClosed(EventArgs e)
     {
+        Mouse.OverrideCursor = null;
         _bitmap.Dispose();
         base.OnClosed(e);
     }
