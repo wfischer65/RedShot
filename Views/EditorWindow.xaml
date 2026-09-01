@@ -103,7 +103,7 @@
                  Grid.ColumnSpan="2"
                  Height="34"
                  Padding="3,2"
-                 Visibility="Collapsed"
+                 Visibility="Hidden"
                  ToolBarTray.IsLocked="True">
             <Button x:Name="BackgroundColorButton"
                     Padding="4,1"

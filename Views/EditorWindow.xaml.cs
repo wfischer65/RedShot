@@ -19,6 +19,9 @@ using WPFKey = System.Windows.Input.Key;
 using WPFKeyEventArgs = System.Windows.Input.KeyEventArgs;
 using WPFMessageBox = System.Windows.MessageBox;
 using WPFRectangle = System.Windows.Shapes.Rectangle;
+using WPFEllipse = System.Windows.Shapes.Ellipse;
+using WPFLine = System.Windows.Shapes.Line;
+using WPFShape = System.Windows.Shapes.Shape;
 using WPFSaveFileDialog = Microsoft.Win32.SaveFileDialog;
 using WinFormsColorDialog = System.Windows.Forms.ColorDialog;
 using DrawingColor = System.Drawing.Color;
@@ -31,10 +34,12 @@ public partial class EditorWindow : Window
     private const double MinimumElementSize = 6;
     private const double HandleSize = 8;
     private readonly DrawingBitmap _bitmap;
-    private readonly List<RectangleElement> _rectangles = [];
+    private readonly List<ShapeElement> _elements = [];
     private string _activeTool = "Select";
-    private RectangleElement? _selectedRectangle;
-    private RectangleElement? _newRectangle;
+    private ShapeElement? _selectedElement;
+    private ShapeElement? _newElement;
+    private WPFPoint _operationStartLinePoint;
+    private WPFPoint _operationEndLinePoint;
     private WPFPoint _operationStart;
     private Rect _operationStartBounds;
     private bool _isDrawing;
@@ -147,10 +152,10 @@ public partial class EditorWindow : Window
             return;
 
         _strokeThickness = thickness;
-        if (_selectedRectangle is not null)
+        if (_selectedElement is not null)
         {
-            _selectedRectangle.StrokeThickness = thickness;
-            _selectedRectangle.Shape.StrokeThickness = thickness;
+            _selectedElement.StrokeThickness = thickness;
+            _selectedElement.Shape.StrokeThickness = thickness;
         }
     }
 
@@ -164,11 +169,11 @@ public partial class EditorWindow : Window
     {
         _foregroundColor = WPFColor.FromRgb(color.R, color.G, color.B);
         ForegroundColorPreview.Background = new SolidColorBrush(_foregroundColor);
-        if (_selectedRectangle is null)
+        if (_selectedElement is null)
             return;
 
-        _selectedRectangle.ForegroundColor = _foregroundColor;
-        _selectedRectangle.Shape.Stroke = new SolidColorBrush(_foregroundColor);
+        _selectedElement.ForegroundColor = _foregroundColor;
+        _selectedElement.Shape.Stroke = new SolidColorBrush(_foregroundColor);
     }
 
     private void ApplyBackgroundColor(WPFColor color)
@@ -176,20 +181,21 @@ public partial class EditorWindow : Window
         _backgroundColor = WPFColor.FromArgb(color.A, color.R, color.G, color.B);
         BackgroundColorPreview.Background = new SolidColorBrush(_backgroundColor);
         BackgroundOpacityText.Text = $"{Math.Round(_backgroundColor.A * 100d / 255)} %";
-        if (_selectedRectangle is null)
+        if (_selectedElement is null)
             return;
 
-        _selectedRectangle.BackgroundColor = _backgroundColor;
-        _selectedRectangle.Shape.Fill = new SolidColorBrush(_backgroundColor);
+        _selectedElement.BackgroundColor = _backgroundColor;
+        if (_selectedElement.Kind != ElementKind.Line)
+            _selectedElement.Shape.Fill = new SolidColorBrush(_backgroundColor);
     }
 
     private void UpdateToolSettingsFromSelection()
     {
-        if (_selectedRectangle is not null)
+        if (_selectedElement is not null)
         {
-            _foregroundColor = _selectedRectangle.ForegroundColor;
-            _backgroundColor = _selectedRectangle.BackgroundColor;
-            _strokeThickness = _selectedRectangle.StrokeThickness;
+            _foregroundColor = _selectedElement.ForegroundColor;
+            _backgroundColor = _selectedElement.BackgroundColor;
+            _strokeThickness = _selectedElement.StrokeThickness;
         }
 
         _updatingToolSettings = true;
@@ -222,36 +228,41 @@ public partial class EditorWindow : Window
                     : string.Equals(button.Tag as string, tool, StringComparison.Ordinal);
         }
 
-        var cursor = tool == "Rectangle" ? WPFCursors.Cross : WPFCursors.Arrow;
+        var cursor = IsDrawingTool(tool) ? WPFCursors.Cross : WPFCursors.Arrow;
         EditorSurface.Cursor = cursor;
         AnnotationCanvas.Cursor = cursor;
         SelectionCanvas.Cursor = cursor;
-        Mouse.OverrideCursor = tool == "Rectangle" ? WPFCursors.Cross : null;
+        Mouse.OverrideCursor = IsDrawingTool(tool) ? WPFCursors.Cross : null;
         UpdateSelectionHandles();
     }
+
+    private static bool IsDrawingTool(string tool) =>
+        tool is "Rectangle" or "Ellipse" or "Line";
 
     private void EditorSurface_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
         var position = ClampToSurface(e.GetPosition(EditorSurface));
 
-        if (_activeTool == "Rectangle")
+        if (IsDrawingTool(_activeTool))
         {
             _operationStart = position;
-            _newRectangle = CreateRectangle(new Rect(position, position));
-            SelectRectangle(_newRectangle);
+            _newElement = CreateElement(_activeTool, position);
+            SelectElement(_newElement);
             _isDrawing = true;
             EditorSurface.CaptureMouse();
             e.Handled = true;
             return;
         }
 
-        var clickedRectangle = FindRectangle(e.OriginalSource as DependencyObject);
-        SelectRectangle(clickedRectangle);
-        if (clickedRectangle is null)
+        var clickedElement = FindElement(e.OriginalSource as DependencyObject);
+        SelectElement(clickedElement);
+        if (clickedElement is null)
             return;
 
         _operationStart = position;
-        _operationStartBounds = clickedRectangle.Bounds;
+        _operationStartBounds = clickedElement.Bounds;
+        _operationStartLinePoint = clickedElement.StartPoint;
+        _operationEndLinePoint = clickedElement.EndPoint;
         _isMoving = true;
         EditorSurface.CaptureMouse();
         e.Handled = true;
@@ -261,20 +272,38 @@ public partial class EditorWindow : Window
     {
         var position = ClampToSurface(e.GetPosition(EditorSurface));
 
-        if (_isDrawing && _newRectangle is not null)
+        if (_isDrawing && _newElement is not null)
         {
-            SetBounds(_newRectangle, NormalizeRect(_operationStart, position));
+            if (_newElement.Kind == ElementKind.Line)
+                SetLinePoints(_newElement, _operationStart, position);
+            else
+                SetBounds(_newElement, NormalizeRect(_operationStart, position));
             return;
         }
 
-        if (!_isMoving || _selectedRectangle is null || e.LeftButton != MouseButtonState.Pressed)
+        if (!_isMoving || _selectedElement is null || e.LeftButton != MouseButtonState.Pressed)
             return;
 
         var delta = position - _operationStart;
+        if (_selectedElement.Kind == ElementKind.Line)
+        {
+            var minX = Math.Min(_operationStartLinePoint.X, _operationEndLinePoint.X);
+            var maxX = Math.Max(_operationStartLinePoint.X, _operationEndLinePoint.X);
+            var minY = Math.Min(_operationStartLinePoint.Y, _operationEndLinePoint.Y);
+            var maxY = Math.Max(_operationStartLinePoint.Y, _operationEndLinePoint.Y);
+            delta.X = Math.Clamp(delta.X, -minX, EditorSurface.Width - maxX);
+            delta.Y = Math.Clamp(delta.Y, -minY, EditorSurface.Height - maxY);
+            SetLinePoints(
+                _selectedElement,
+                _operationStartLinePoint + delta,
+                _operationEndLinePoint + delta);
+            return;
+        }
+
         var bounds = _operationStartBounds;
         bounds.X = Math.Clamp(bounds.X + delta.X, 0, EditorSurface.Width - bounds.Width);
         bounds.Y = Math.Clamp(bounds.Y + delta.Y, 0, EditorSurface.Height - bounds.Height);
-        SetBounds(_selectedRectangle, bounds);
+        SetBounds(_selectedElement, bounds);
     }
 
     private void EditorSurface_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -283,15 +312,19 @@ public partial class EditorWindow : Window
             return;
 
         EditorSurface.ReleaseMouseCapture();
-        if (_isDrawing && _newRectangle is not null)
+        if (_isDrawing && _newElement is not null)
         {
-            if (_newRectangle.Bounds.Width < MinimumElementSize ||
-                _newRectangle.Bounds.Height < MinimumElementSize)
-                RemoveRectangle(_newRectangle);
-            else
-                SelectRectangle(_newRectangle);
+            var isTooSmall = _newElement.Kind == ElementKind.Line
+                ? (_newElement.EndPoint - _newElement.StartPoint).Length < MinimumElementSize
+                : _newElement.Bounds.Width < MinimumElementSize ||
+                  _newElement.Bounds.Height < MinimumElementSize;
 
-            _newRectangle = null;
+            if (isTooSmall)
+                RemoveElement(_newElement);
+            else
+                SelectElement(_newElement);
+
+            _newElement = null;
         }
 
         _isDrawing = false;
@@ -299,72 +332,123 @@ public partial class EditorWindow : Window
         e.Handled = true;
     }
 
-    private RectangleElement CreateRectangle(Rect bounds)
+    private ShapeElement CreateElement(string tool, WPFPoint start)
     {
-        var shape = new WPFRectangle
+        var kind = tool switch
         {
-            Stroke = new SolidColorBrush(_foregroundColor),
-            StrokeThickness = _strokeThickness,
-            Fill = new SolidColorBrush(_backgroundColor),
-            Cursor = WPFCursors.SizeAll
+            "Ellipse" => ElementKind.Ellipse,
+            "Line" => ElementKind.Line,
+            _ => ElementKind.Rectangle
         };
 
-        var element = new RectangleElement(
-            shape, bounds, _foregroundColor, _backgroundColor, _strokeThickness);
+        WPFShape shape = kind switch
+        {
+            ElementKind.Ellipse => new WPFEllipse(),
+            ElementKind.Line => new WPFLine(),
+            _ => new WPFRectangle()
+        };
+
+        shape.Stroke = new SolidColorBrush(_foregroundColor);
+        shape.StrokeThickness = _strokeThickness;
+        shape.Cursor = WPFCursors.SizeAll;
+        if (kind != ElementKind.Line)
+            shape.Fill = new SolidColorBrush(_backgroundColor);
+
+        var element = new ShapeElement(
+            shape, kind, new Rect(start, start), _foregroundColor,
+            _backgroundColor, _strokeThickness, start, start);
         shape.Tag = element;
-        _rectangles.Add(element);
+        _elements.Add(element);
         AnnotationCanvas.Children.Add(shape);
-        SetBounds(element, bounds);
+
+        if (kind == ElementKind.Line)
+            SetLinePoints(element, start, start);
+        else
+            SetBounds(element, element.Bounds);
+
         return element;
     }
 
-    private void RemoveRectangle(RectangleElement element)
+    private void RemoveElement(ShapeElement element)
     {
         AnnotationCanvas.Children.Remove(element.Shape);
-        _rectangles.Remove(element);
-        if (ReferenceEquals(_selectedRectangle, element))
-            SelectRectangle(null);
+        _elements.Remove(element);
+        if (ReferenceEquals(_selectedElement, element))
+            SelectElement(null);
     }
 
-    private RectangleElement? FindRectangle(DependencyObject? source)
+    private ShapeElement? FindElement(DependencyObject? source)
     {
         while (source is not null && !ReferenceEquals(source, EditorSurface))
         {
-            if (source is WPFRectangle { Tag: RectangleElement element })
+            if (source is WPFShape { Tag: ShapeElement element })
                 return element;
             source = VisualTreeHelper.GetParent(source);
         }
         return null;
     }
 
-    private void SelectRectangle(RectangleElement? element)
+    private void SelectElement(ShapeElement? element)
     {
-        _selectedRectangle = element;
+        _selectedElement = element;
         ToolSettingsBar.Visibility = element is null
-            ? Visibility.Collapsed
+            ? Visibility.Hidden
             : Visibility.Visible;
         UpdateSelectionHandles();
         UpdateToolSettingsFromSelection();
     }
 
-    private void SetBounds(RectangleElement element, Rect bounds)
+    private void SetBounds(ShapeElement element, Rect bounds)
     {
         element.Bounds = bounds;
         Canvas.SetLeft(element.Shape, bounds.Left);
         Canvas.SetTop(element.Shape, bounds.Top);
         element.Shape.Width = Math.Max(0, bounds.Width);
         element.Shape.Height = Math.Max(0, bounds.Height);
-        if (ReferenceEquals(_selectedRectangle, element))
+        if (ReferenceEquals(_selectedElement, element))
+            PositionSelectionHandles();
+    }
+
+    private void SetLinePoints(ShapeElement element, WPFPoint start, WPFPoint end)
+    {
+        element.StartPoint = start;
+        element.EndPoint = end;
+        element.Bounds = NormalizeRect(start, end);
+
+        if (element.Shape is WPFLine line)
+        {
+            line.X1 = start.X;
+            line.Y1 = start.Y;
+            line.X2 = end.X;
+            line.Y2 = end.Y;
+        }
+
+        if (ReferenceEquals(_selectedElement, element))
             PositionSelectionHandles();
     }
 
     private void UpdateSelectionHandles()
     {
         SelectionCanvas.Children.Clear();
-        if (_selectedRectangle is null || _activeTool != "Select")
+        if (_selectedElement is null || _activeTool != "Select")
             return;
 
-        var b = _selectedRectangle.Bounds;
+        if (_selectedElement.Kind == ElementKind.Line)
+        {
+            AddHandle(
+                ResizeDirection.LineStart,
+                _selectedElement.StartPoint.X,
+                _selectedElement.StartPoint.Y,
+                WPFCursors.Cross);
+            AddHandle(
+                ResizeDirection.LineEnd,
+                _selectedElement.EndPoint.X,
+                _selectedElement.EndPoint.Y,
+                WPFCursors.Cross);
+            return;
+        }
+
+        var b = _selectedElement.Bounds;
         AddHandle(ResizeDirection.TopLeft, b.Left, b.Top, WPFCursors.SizeNWSE);
         AddHandle(ResizeDirection.Top, b.Left + b.Width / 2, b.Top, WPFCursors.SizeNS);
         AddHandle(ResizeDirection.TopRight, b.Right, b.Top, WPFCursors.SizeNESW);
@@ -377,10 +461,10 @@ public partial class EditorWindow : Window
 
     private void PositionSelectionHandles()
     {
-        if (_selectedRectangle is null || SelectionCanvas.Children.Count == 0)
+        if (_selectedElement is null || SelectionCanvas.Children.Count == 0)
             return;
 
-        var b = _selectedRectangle.Bounds;
+        var b = _selectedElement.Bounds;
         foreach (var child in SelectionCanvas.Children.OfType<Thumb>())
         {
             if (child.Tag is not ResizeDirection direction)
@@ -388,6 +472,10 @@ public partial class EditorWindow : Window
 
             var (x, y) = direction switch
             {
+                ResizeDirection.LineStart =>
+                    (_selectedElement.StartPoint.X, _selectedElement.StartPoint.Y),
+                ResizeDirection.LineEnd =>
+                    (_selectedElement.EndPoint.X, _selectedElement.EndPoint.Y),
                 ResizeDirection.TopLeft => (b.Left, b.Top),
                 ResizeDirection.Top => (b.Left + b.Width / 2, b.Top),
                 ResizeDirection.TopRight => (b.Right, b.Top),
@@ -424,10 +512,29 @@ public partial class EditorWindow : Window
 
     private void ResizeHandle_DragDelta(object sender, DragDeltaEventArgs e)
     {
-        if (_selectedRectangle is null || sender is not Thumb { Tag: ResizeDirection direction })
+        if (_selectedElement is null || sender is not Thumb { Tag: ResizeDirection direction })
             return;
 
-        var b = _selectedRectangle.Bounds;
+        if (_selectedElement.Kind == ElementKind.Line)
+        {
+            if (direction == ResizeDirection.LineStart)
+            {
+                var start = ClampToSurface(new WPFPoint(
+                    _selectedElement.StartPoint.X + e.HorizontalChange,
+                    _selectedElement.StartPoint.Y + e.VerticalChange));
+                SetLinePoints(_selectedElement, start, _selectedElement.EndPoint);
+            }
+            else if (direction == ResizeDirection.LineEnd)
+            {
+                var end = ClampToSurface(new WPFPoint(
+                    _selectedElement.EndPoint.X + e.HorizontalChange,
+                    _selectedElement.EndPoint.Y + e.VerticalChange));
+                SetLinePoints(_selectedElement, _selectedElement.StartPoint, end);
+            }
+            return;
+        }
+
+        var b = _selectedElement.Bounds;
         var left = b.Left;
         var top = b.Top;
         var right = b.Right;
@@ -442,7 +549,7 @@ public partial class EditorWindow : Window
         if (direction is ResizeDirection.Bottom or ResizeDirection.BottomLeft or ResizeDirection.BottomRight)
             bottom = Math.Clamp(bottom + e.VerticalChange, top + MinimumElementSize, EditorSurface.Height);
 
-        SetBounds(_selectedRectangle, new Rect(new WPFPoint(left, top), new WPFPoint(right, bottom)));
+        SetBounds(_selectedElement, new Rect(new WPFPoint(left, top), new WPFPoint(right, bottom)));
     }
 
     private WPFPoint ClampToSurface(WPFPoint point) => new(
@@ -513,7 +620,7 @@ public partial class EditorWindow : Window
         var version = Assembly.GetExecutingAssembly().GetName().Version;
         var versionText = version is null ? "unbekannt" : $"{version.Major}.{version.Minor}.{version.Build}";
         WPFMessageBox.Show(this,
-            $"RedShot\nVersion {versionText}\n\nEditor: Rectangle-PersistentTool-V1",
+            $"RedShot\nVersion {versionText}\n\nEditor: Shapes-RectangleEllipseLine-V1",
             "Ueber RedShot", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
@@ -521,9 +628,9 @@ public partial class EditorWindow : Window
 
     protected override void OnPreviewKeyDown(WPFKeyEventArgs e)
     {
-        if (e.Key == WPFKey.Delete && _selectedRectangle is not null)
+        if (e.Key == WPFKey.Delete && _selectedElement is not null)
         {
-            RemoveRectangle(_selectedRectangle);
+            RemoveElement(_selectedElement);
             e.Handled = true;
             return;
         }
@@ -538,19 +645,31 @@ public partial class EditorWindow : Window
         base.OnClosed(e);
     }
 
-    private sealed class RectangleElement(
-        WPFRectangle shape, Rect bounds, WPFColor foregroundColor,
-        WPFColor backgroundColor, double strokeThickness)
+    private sealed class ShapeElement(
+        WPFShape shape, ElementKind kind, Rect bounds,
+        WPFColor foregroundColor, WPFColor backgroundColor,
+        double strokeThickness, WPFPoint startPoint, WPFPoint endPoint)
     {
-        public WPFRectangle Shape { get; } = shape;
+        public WPFShape Shape { get; } = shape;
+        public ElementKind Kind { get; } = kind;
         public Rect Bounds { get; set; } = bounds;
         public WPFColor ForegroundColor { get; set; } = foregroundColor;
         public WPFColor BackgroundColor { get; set; } = backgroundColor;
         public double StrokeThickness { get; set; } = strokeThickness;
+        public WPFPoint StartPoint { get; set; } = startPoint;
+        public WPFPoint EndPoint { get; set; } = endPoint;
+    }
+
+    private enum ElementKind
+    {
+        Rectangle,
+        Ellipse,
+        Line
     }
 
     private enum ResizeDirection
     {
-        TopLeft, Top, TopRight, Right, BottomRight, Bottom, BottomLeft, Left
+        TopLeft, Top, TopRight, Right, BottomRight, Bottom, BottomLeft, Left,
+        LineStart, LineEnd
     }
 }
