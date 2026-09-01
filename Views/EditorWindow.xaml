@@ -30,6 +30,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -95,9 +96,122 @@
                     Click="About_Click"/>
         </ToolBar>
 
+        <!-- Eigenschaften des aktiven Zeichenwerkzeugs bzw. Elements. -->
+        <ToolBar Grid.Row="1"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="2"
+                 Height="34"
+                 Padding="3,2"
+                 ToolBarTray.IsLocked="True">
+            <Button x:Name="BackgroundColorButton"
+                    Padding="4,1"
+                    ToolTip="Hintergrundfarbe und Deckkraft"
+                    Click="BackgroundColorButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="▰" FontSize="14" Margin="0,0,4,0"/>
+                    <Border x:Name="BackgroundColorPreview"
+                            Width="22" Height="5"
+                            VerticalAlignment="Bottom"
+                            BorderBrush="Black" BorderThickness="1"
+                            Background="#80FFFF00"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ForegroundColorButton"
+                    Padding="4,1"
+                    ToolTip="Vordergrundfarbe"
+                    Click="ForegroundColorButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="✎" FontSize="14" Margin="0,0,4,0"/>
+                    <Border x:Name="ForegroundColorPreview"
+                            Width="22" Height="5"
+                            VerticalAlignment="Bottom"
+                            BorderBrush="Black" BorderThickness="1"
+                            Background="#FFFF0000"/>
+                </StackPanel>
+            </Button>
+            <Separator/>
+            <TextBlock Text="Linienstärke"
+                       VerticalAlignment="Center"
+                       Margin="4,0,5,0"/>
+            <ComboBox x:Name="StrokeThicknessComboBox"
+                      Width="48"
+                      SelectedIndex="2"
+                      SelectionChanged="StrokeThicknessComboBox_SelectionChanged">
+                <ComboBoxItem Content="1" Tag="1"/>
+                <ComboBoxItem Content="2" Tag="2"/>
+                <ComboBoxItem Content="3" Tag="3"/>
+                <ComboBoxItem Content="4" Tag="4"/>
+                <ComboBoxItem Content="5" Tag="5"/>
+                <ComboBoxItem Content="6" Tag="6"/>
+                <ComboBoxItem Content="8" Tag="8"/>
+                <ComboBoxItem Content="10" Tag="10"/>
+            </ComboBox>
+        </ToolBar>
+
+        <Popup x:Name="BackgroundColorPopup"
+               PlacementTarget="{Binding ElementName=BackgroundColorButton}"
+               Placement="Bottom"
+               StaysOpen="False"
+               AllowsTransparency="True">
+            <Border Background="White" BorderBrush="#777" BorderThickness="1"
+                    Padding="8" CornerRadius="2">
+                <StackPanel Width="190">
+                    <TextBlock Text="Hintergrundfarbe" FontWeight="SemiBold" Margin="0,0,0,6"/>
+                    <UniformGrid Columns="5" Rows="2">
+                        <Button Tag="#FFFFFF" Background="#FFFFFF" Height="25" Margin="2" Click="BackgroundPresetColor_Click"/>
+                        <Button Tag="#FFFF00" Background="#FFFF00" Height="25" Margin="2" Click="BackgroundPresetColor_Click"/>
+                        <Button Tag="#FFA500" Background="#FFA500" Height="25" Margin="2" Click="BackgroundPresetColor_Click"/>
+                        <Button Tag="#FF0000" Background="#FF0000" Height="25" Margin="2" Click="BackgroundPresetColor_Click"/>
+                        <Button Tag="#FF00FF" Background="#FF00FF" Height="25" Margin="2" Click="BackgroundPresetColor_Click"/>
+                        <Button Tag="#00FF00" Background="#00FF00" Height="25" Margin="2" Click="BackgroundPresetColor_Click"/>
+                        <Button Tag="#00FFFF" Background="#00FFFF" Height="25" Margin="2" Click="BackgroundPresetColor_Click"/>
+                        <Button Tag="#0000FF" Background="#0000FF" Height="25" Margin="2" Click="BackgroundPresetColor_Click"/>
+                        <Button Tag="#808080" Background="#808080" Height="25" Margin="2" Click="BackgroundPresetColor_Click"/>
+                        <Button Tag="#000000" Background="#000000" Height="25" Margin="2" Click="BackgroundPresetColor_Click"/>
+                    </UniformGrid>
+                    <Button Content="Weitere Farbe..." Margin="2,5,2,7" Click="BackgroundMoreColor_Click"/>
+                    <TextBlock Text="Deckkraft"/>
+                    <DockPanel>
+                        <TextBlock x:Name="BackgroundOpacityText" Text="50 %"
+                                   DockPanel.Dock="Right" Width="38" TextAlignment="Right"/>
+                        <Slider x:Name="BackgroundOpacitySlider"
+                                Minimum="0" Maximum="100" Value="50"
+                                TickFrequency="5" IsSnapToTickEnabled="True"
+                                ValueChanged="BackgroundOpacitySlider_ValueChanged"/>
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
+
+        <Popup x:Name="ForegroundColorPopup"
+               PlacementTarget="{Binding ElementName=ForegroundColorButton}"
+               Placement="Bottom"
+               StaysOpen="False"
+               AllowsTransparency="True">
+            <Border Background="White" BorderBrush="#777" BorderThickness="1"
+                    Padding="8" CornerRadius="2">
+                <StackPanel Width="190">
+                    <TextBlock Text="Vordergrundfarbe" FontWeight="SemiBold" Margin="0,0,0,6"/>
+                    <UniformGrid Columns="5" Rows="2">
+                        <Button Tag="#FFFFFF" Background="#FFFFFF" Height="25" Margin="2" Click="ForegroundPresetColor_Click"/>
+                        <Button Tag="#FFFF00" Background="#FFFF00" Height="25" Margin="2" Click="ForegroundPresetColor_Click"/>
+                        <Button Tag="#FFA500" Background="#FFA500" Height="25" Margin="2" Click="ForegroundPresetColor_Click"/>
+                        <Button Tag="#FF0000" Background="#FF0000" Height="25" Margin="2" Click="ForegroundPresetColor_Click"/>
+                        <Button Tag="#FF00FF" Background="#FF00FF" Height="25" Margin="2" Click="ForegroundPresetColor_Click"/>
+                        <Button Tag="#00FF00" Background="#00FF00" Height="25" Margin="2" Click="ForegroundPresetColor_Click"/>
+                        <Button Tag="#00FFFF" Background="#00FFFF" Height="25" Margin="2" Click="ForegroundPresetColor_Click"/>
+                        <Button Tag="#0000FF" Background="#0000FF" Height="25" Margin="2" Click="ForegroundPresetColor_Click"/>
+                        <Button Tag="#808080" Background="#808080" Height="25" Margin="2" Click="ForegroundPresetColor_Click"/>
+                        <Button Tag="#000000" Background="#000000" Height="25" Margin="2" Click="ForegroundPresetColor_Click"/>
+                    </UniformGrid>
+                    <Button Content="Weitere Farbe..." Margin="2,5,2,0" Click="ForegroundMoreColor_Click"/>
+                </StackPanel>
+            </Border>
+        </Popup>
+
         <!-- Linke Werkzeugleiste: absichtlich KEINE WPF-ToolBar,
              damit es keinerlei Overflow-/Aufklappmechanismus gibt. -->
-        <Border Grid.Row="1"
+        <Border Grid.Row="2"
                 Grid.Column="0"
                 Width="40"
                 HorizontalAlignment="Left"
@@ -204,7 +318,7 @@
             </ScrollViewer>
         </Border>
 
-        <ScrollViewer Grid.Row="1"
+        <ScrollViewer Grid.Row="2"
                       Grid.Column="1"
                       HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto"

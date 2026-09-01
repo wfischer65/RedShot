@@ -18,6 +18,9 @@ using WPFPoint = System.Windows.Point;
 using WPFMessageBox = System.Windows.MessageBox;
 using WPFRectangle = System.Windows.Shapes.Rectangle;
 using WPFSaveFileDialog = Microsoft.Win32.SaveFileDialog;
+using WinFormsColorDialog = System.Windows.Forms.ColorDialog;
+using DrawingColor = System.Drawing.Color;
+using WPFButton = System.Windows.Controls.Button;
 
 namespace RedShot.Views;
 
@@ -38,6 +41,8 @@ public partial class EditorWindow : Window
     // Diese Werte werden spaeter durch das Farb-/Transparenz-Popup gesetzt.
     private WPFColor _foregroundColor = WPFColor.FromRgb(255, 0, 0);
     private WPFColor _backgroundColor = WPFColor.FromArgb(128, 255, 255, 0);
+    private double _strokeThickness = 3;
+    private bool _updatingToolSettings;
 
     public EditorWindow(DrawingBitmap bitmap)
     {
@@ -51,6 +56,7 @@ public partial class EditorWindow : Window
         PreviewImage.Source = BitmapToBitmapSource(bitmap);
         EditorSurface.Width = bitmap.Width;
         EditorSurface.Height = bitmap.Height;
+        UpdateToolSettingsFromSelection();
     }
 
     private static BitmapSource BitmapToBitmapSource(DrawingBitmap bitmap)
@@ -72,6 +78,134 @@ public partial class EditorWindow : Window
     {
         if (sender is ToggleButton selected && selected.Tag is string tool)
             SetActiveTool(tool, selected);
+    }
+
+    private void BackgroundColorButton_Click(object sender, RoutedEventArgs e) =>
+        BackgroundColorPopup.IsOpen = true;
+
+    private void ForegroundColorButton_Click(object sender, RoutedEventArgs e) =>
+        ForegroundColorPopup.IsOpen = true;
+
+    private void BackgroundPresetColor_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is WPFButton { Tag: string value })
+        {
+            var color = ParseOpaqueColor(value);
+            ApplyBackgroundColor(WPFColor.FromArgb(
+                _backgroundColor.A, color.R, color.G, color.B));
+        }
+    }
+
+    private void ForegroundPresetColor_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is WPFButton { Tag: string value })
+            ApplyForegroundColor(ParseOpaqueColor(value));
+    }
+
+    private void BackgroundMoreColor_Click(object sender, RoutedEventArgs e)
+    {
+        BackgroundColorPopup.IsOpen = false;
+        using var dialog = new WinFormsColorDialog
+        {
+            Color = DrawingColor.FromArgb(_backgroundColor.R, _backgroundColor.G, _backgroundColor.B),
+            FullOpen = true
+        };
+        if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            ApplyBackgroundColor(WPFColor.FromArgb(
+                _backgroundColor.A, dialog.Color.R, dialog.Color.G, dialog.Color.B));
+    }
+
+    private void ForegroundMoreColor_Click(object sender, RoutedEventArgs e)
+    {
+        ForegroundColorPopup.IsOpen = false;
+        using var dialog = new WinFormsColorDialog
+        {
+            Color = DrawingColor.FromArgb(_foregroundColor.R, _foregroundColor.G, _foregroundColor.B),
+            FullOpen = true
+        };
+        if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            ApplyForegroundColor(WPFColor.FromRgb(dialog.Color.R, dialog.Color.G, dialog.Color.B));
+    }
+
+    private void BackgroundOpacitySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
+        if (!IsInitialized || _updatingToolSettings)
+            return;
+
+        var alpha = (byte)Math.Round(e.NewValue * 255 / 100);
+        ApplyBackgroundColor(WPFColor.FromArgb(
+            alpha, _backgroundColor.R, _backgroundColor.G, _backgroundColor.B));
+    }
+
+    private void StrokeThicknessComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (!IsInitialized || _updatingToolSettings ||
+            StrokeThicknessComboBox.SelectedItem is not ComboBoxItem { Tag: string value } ||
+            !double.TryParse(value, out var thickness))
+            return;
+
+        _strokeThickness = thickness;
+        if (_selectedRectangle is not null)
+        {
+            _selectedRectangle.StrokeThickness = thickness;
+            _selectedRectangle.Shape.StrokeThickness = thickness;
+        }
+    }
+
+    private static WPFColor ParseOpaqueColor(string value)
+    {
+        var color = (WPFColor)System.Windows.Media.ColorConverter.ConvertFromString(value)!;
+        return WPFColor.FromRgb(color.R, color.G, color.B);
+    }
+
+    private void ApplyForegroundColor(WPFColor color)
+    {
+        _foregroundColor = WPFColor.FromRgb(color.R, color.G, color.B);
+        ForegroundColorPreview.Background = new SolidColorBrush(_foregroundColor);
+        if (_selectedRectangle is null)
+            return;
+
+        _selectedRectangle.ForegroundColor = _foregroundColor;
+        _selectedRectangle.Shape.Stroke = new SolidColorBrush(_foregroundColor);
+    }
+
+    private void ApplyBackgroundColor(WPFColor color)
+    {
+        _backgroundColor = WPFColor.FromArgb(color.A, color.R, color.G, color.B);
+        BackgroundColorPreview.Background = new SolidColorBrush(_backgroundColor);
+        BackgroundOpacityText.Text = $"{Math.Round(_backgroundColor.A * 100d / 255)} %";
+        if (_selectedRectangle is null)
+            return;
+
+        _selectedRectangle.BackgroundColor = _backgroundColor;
+        _selectedRectangle.Shape.Fill = new SolidColorBrush(_backgroundColor);
+    }
+
+    private void UpdateToolSettingsFromSelection()
+    {
+        if (_selectedRectangle is not null)
+        {
+            _foregroundColor = _selectedRectangle.ForegroundColor;
+            _backgroundColor = _selectedRectangle.BackgroundColor;
+            _strokeThickness = _selectedRectangle.StrokeThickness;
+        }
+
+        _updatingToolSettings = true;
+        ForegroundColorPreview.Background = new SolidColorBrush(_foregroundColor);
+        BackgroundColorPreview.Background = new SolidColorBrush(_backgroundColor);
+        BackgroundOpacitySlider.Value = _backgroundColor.A * 100d / 255;
+        BackgroundOpacityText.Text = $"{Math.Round(BackgroundOpacitySlider.Value)} %";
+
+        foreach (var item in StrokeThicknessComboBox.Items.OfType<ComboBoxItem>())
+        {
+            if (item.Tag is string value && double.TryParse(value, out var thickness) &&
+                Math.Abs(thickness - _strokeThickness) < 0.01)
+            {
+                StrokeThicknessComboBox.SelectedItem = item;
+                break;
+            }
+        }
+        _updatingToolSettings = false;
     }
 
     private void SetActiveTool(string tool, ToggleButton? selectedButton = null)
@@ -169,12 +303,13 @@ public partial class EditorWindow : Window
         var shape = new WPFRectangle
         {
             Stroke = new SolidColorBrush(_foregroundColor),
-            StrokeThickness = 3,
+            StrokeThickness = _strokeThickness,
             Fill = new SolidColorBrush(_backgroundColor),
             Cursor = WPFCursors.SizeAll
         };
 
-        var element = new RectangleElement(shape, bounds, _foregroundColor, _backgroundColor);
+        var element = new RectangleElement(
+            shape, bounds, _foregroundColor, _backgroundColor, _strokeThickness);
         shape.Tag = element;
         _rectangles.Add(element);
         AnnotationCanvas.Children.Add(shape);
@@ -205,6 +340,7 @@ public partial class EditorWindow : Window
     {
         _selectedRectangle = element;
         UpdateSelectionHandles();
+        UpdateToolSettingsFromSelection();
     }
 
     private void SetBounds(RectangleElement element, Rect bounds)
@@ -373,7 +509,7 @@ public partial class EditorWindow : Window
         var version = Assembly.GetExecutingAssembly().GetName().Version;
         var versionText = version is null ? "unbekannt" : $"{version.Major}.{version.Minor}.{version.Build}";
         WPFMessageBox.Show(this,
-            $"RedShot\nVersion {versionText}\n\nEditor: Rectangle-ResizeHandles-V2",
+            $"RedShot\nVersion {versionText}\n\nEditor: Rectangle-StyleToolbar-V1",
             "Ueber RedShot", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
@@ -387,12 +523,14 @@ public partial class EditorWindow : Window
     }
 
     private sealed class RectangleElement(
-        WPFRectangle shape, Rect bounds, WPFColor foregroundColor, WPFColor backgroundColor)
+        WPFRectangle shape, Rect bounds, WPFColor foregroundColor,
+        WPFColor backgroundColor, double strokeThickness)
     {
         public WPFRectangle Shape { get; } = shape;
         public Rect Bounds { get; set; } = bounds;
         public WPFColor ForegroundColor { get; set; } = foregroundColor;
         public WPFColor BackgroundColor { get; set; } = backgroundColor;
+        public double StrokeThickness { get; set; } = strokeThickness;
     }
 
     private enum ResizeDirection
