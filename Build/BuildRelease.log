@@ -1,19 +1,19 @@
 RedShot Increment-Version.ps1 V1.1.1
-Start: 2026-09-01 23:09:16.443
+Start: 2026-09-01 23:15:11.797
 
 Version erhoeht:
-  Alt: 1.0.17
-  Neu: 1.0.18
+  Alt: 1.0.18
+  Neu: 1.0.19
 
 **********************
 PowerShell transcript start
-Start time: 20260901230916
+Start time: 20260901231512
 Username: WEIMAR\wfisc
 RunAs User: WEIMAR\wfisc
 Configuration Name: 
 Machine: WEIMAR (Microsoft Windows NT 10.0.26200.0)
 Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -File C:\Users\wfisc\source\repos\RedShot\Build\Release.ps1
-Process ID: 33264
+Process ID: 19088
 PSVersion: 7.6.5
 PSEdition: Core
 GitCommitId: 7.6.5
@@ -39,19 +39,20 @@ Projekt: C:\Users\wfisc\source\repos\RedShot\RedShot.csproj
 ============================================================
 
 Versionssynchronisierung:
-  Projektversion: 1.0.18
-  MSI-Version:     1.0.18
+  Projektversion: 1.0.19
+  MSI-Version:     1.0.19
 
 Versionssynchronisierung erfolgreich abgeschlossen.
-Zentrale Version: 1.0.18
-MSI-Version:      1.0.18
+Zentrale Version: 1.0.19
+MSI-Version:      1.0.19
 Hauptdatei:       RedShot.exe
-Release-Ordner:   C:\Users\wfisc\source\repos\RedShot\Release\1.0.18
+Release-Ordner:   C:\Users\wfisc\source\repos\RedShot\Release\1.0.19
 
 ============================================================
 3. Laufenden RedShot-Prozess beenden
 ============================================================
-Kein laufender RedShot-Prozess gefunden.
+Laufende RedShot-Prozesse werden beendet: 3528
+RedShot wurde beendet. Der Release verwendet damit keinen alten laufenden Programmstand.
 
 ============================================================
 4. Alte Build-Ausgaben bereinigen
@@ -97,5 +98,5 @@ Gebautes MSI:    C:\Users\wfisc\source\repos\RedShot\MSI\bin\x64\Release\RedShot
 Build-Log wird fuer das Sources-Archiv geschlossen.
 **********************
 PowerShell transcript end
-End time: 20260901230958
+End time: 20260901231553
 **********************

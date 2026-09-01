@@ -97,11 +97,13 @@
         </ToolBar>
 
         <!-- Eigenschaften des aktiven Zeichenwerkzeugs bzw. Elements. -->
-        <ToolBar Grid.Row="1"
+        <ToolBar x:Name="ToolSettingsBar"
+                 Grid.Row="1"
                  Grid.Column="0"
                  Grid.ColumnSpan="2"
                  Height="34"
                  Padding="3,2"
+                 Visibility="Collapsed"
                  ToolBarTray.IsLocked="True">
             <Button x:Name="BackgroundColorButton"
                     Padding="4,1"

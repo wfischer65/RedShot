@@ -292,7 +292,6 @@ public partial class EditorWindow : Window
                 SelectRectangle(_newRectangle);
 
             _newRectangle = null;
-            SetActiveTool("Select");
         }
 
         _isDrawing = false;
@@ -341,6 +340,9 @@ public partial class EditorWindow : Window
     private void SelectRectangle(RectangleElement? element)
     {
         _selectedRectangle = element;
+        ToolSettingsBar.Visibility = element is null
+            ? Visibility.Collapsed
+            : Visibility.Visible;
         UpdateSelectionHandles();
         UpdateToolSettingsFromSelection();
     }
@@ -511,7 +513,7 @@ public partial class EditorWindow : Window
         var version = Assembly.GetExecutingAssembly().GetName().Version;
         var versionText = version is null ? "unbekannt" : $"{version.Major}.{version.Minor}.{version.Build}";
         WPFMessageBox.Show(this,
-            $"RedShot\nVersion {versionText}\n\nEditor: Rectangle-DeleteKey-V1",
+            $"RedShot\nVersion {versionText}\n\nEditor: Rectangle-PersistentTool-V1",
             "Ueber RedShot", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
