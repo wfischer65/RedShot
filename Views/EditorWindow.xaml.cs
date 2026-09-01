@@ -147,7 +147,7 @@ public partial class EditorWindow : Window
 
         WPFMessageBox.Show(
             this,
-            $"RedShot\nVersion {versionText}\n\nEditor-Layout: VerticalToolbar-Grid",
+            $"RedShot\nVersion {versionText}\n\nEditor-Layout: FixedSidebar-40-Scroll",
             "Über RedShot",
             MessageBoxButton.OK,
             MessageBoxImage.Information);

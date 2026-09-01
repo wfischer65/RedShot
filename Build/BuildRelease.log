@@ -1,19 +1,19 @@
 RedShot Increment-Version.ps1 V1.1.1
-Start: 2026-09-01 21:47:45.031
+Start: 2026-09-01 21:56:59.911
 
 Version erhoeht:
-  Alt: 1.0.13
-  Neu: 1.0.14
+  Alt: 1.0.14
+  Neu: 1.0.15
 
 **********************
 PowerShell transcript start
-Start time: 20260901214745
+Start time: 20260901215700
 Username: WEIMAR\wfisc
 RunAs User: WEIMAR\wfisc
 Configuration Name: 
 Machine: WEIMAR (Microsoft Windows NT 10.0.26200.0)
 Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -File C:\Users\wfisc\source\repos\RedShot\Build\Release.ps1
-Process ID: 30612
+Process ID: 300
 PSVersion: 7.6.5
 PSEdition: Core
 GitCommitId: 7.6.5
@@ -39,20 +39,19 @@ Projekt: C:\Users\wfisc\source\repos\RedShot\RedShot.csproj
 ============================================================
 
 Versionssynchronisierung:
-  Projektversion: 1.0.14
-  MSI-Version:     1.0.14
+  Projektversion: 1.0.15
+  MSI-Version:     1.0.15
 
 Versionssynchronisierung erfolgreich abgeschlossen.
-Zentrale Version: 1.0.14
-MSI-Version:      1.0.14
+Zentrale Version: 1.0.15
+MSI-Version:      1.0.15
 Hauptdatei:       RedShot.exe
-Release-Ordner:   C:\Users\wfisc\source\repos\RedShot\Release\1.0.14
+Release-Ordner:   C:\Users\wfisc\source\repos\RedShot\Release\1.0.15
 
 ============================================================
 3. Laufenden RedShot-Prozess beenden
 ============================================================
-Laufende RedShot-Prozesse werden beendet: 22752
-RedShot wurde beendet. Der Release verwendet damit keinen alten laufenden Programmstand.
+Kein laufender RedShot-Prozess gefunden.
 
 ============================================================
 4. Alte Build-Ausgaben bereinigen
@@ -90,7 +89,6 @@ Release-Projektmappe: C:\Users\wfisc\source\repos\RedShot\RedShot.Release.slnx
 8. MSI bauen
 ============================================================
 
-Erstellen von Erfolgreich in 38,3s
 Gebautes MSI:    C:\Users\wfisc\source\repos\RedShot\MSI\bin\x64\Release\RedShot.msi
 
 ============================================================
@@ -99,5 +97,5 @@ Gebautes MSI:    C:\Users\wfisc\source\repos\RedShot\MSI\bin\x64\Release\RedShot
 Build-Log wird fuer das Sources-Archiv geschlossen.
 **********************
 PowerShell transcript end
-End time: 20260901214830
+End time: 20260901215737
 **********************
