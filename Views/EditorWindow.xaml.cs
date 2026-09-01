@@ -26,6 +26,7 @@ using WPFSaveFileDialog = Microsoft.Win32.SaveFileDialog;
 using WinFormsColorDialog = System.Windows.Forms.ColorDialog;
 using DrawingColor = System.Drawing.Color;
 using WPFButton = System.Windows.Controls.Button;
+using ClosingCancelEventArgs = System.ComponentModel.CancelEventArgs;
 
 namespace RedShot.Views;
 
@@ -44,6 +45,7 @@ public partial class EditorWindow : Window
     private Rect _operationStartBounds;
     private bool _isDrawing;
     private bool _isMoving;
+    private bool _wasSavedOrCopied;
 
     // Diese Werte werden spaeter durch das Farb-/Transparenz-Popup gesetzt.
     private WPFColor _foregroundColor = WPFColor.FromRgb(255, 0, 0);
@@ -575,10 +577,15 @@ public partial class EditorWindow : Window
         return result;
     }
 
-    private void Copy_Click(object sender, RoutedEventArgs e) =>
+    private void Copy_Click(object sender, RoutedEventArgs e)
+    {
         WPFClipboard.SetImage(CreateCompositeBitmapSource());
+        _wasSavedOrCopied = true;
+    }
 
-    private void SaveAs_Click(object sender, RoutedEventArgs e)
+    private void SaveAs_Click(object sender, RoutedEventArgs e) => SaveImage();
+
+    private bool SaveImage()
     {
         var dialog = new WPFSaveFileDialog
         {
@@ -587,7 +594,7 @@ public partial class EditorWindow : Window
             FileName = $"RedShot_{DateTime.Now:yyyyMMdd_HHmmss}.png"
         };
         if (dialog.ShowDialog(this) != true)
-            return;
+            return false;
 
         BitmapEncoder encoder = Path.GetExtension(dialog.FileName).ToLowerInvariant() switch
         {
@@ -598,6 +605,8 @@ public partial class EditorWindow : Window
         encoder.Frames.Add(BitmapFrame.Create(CreateCompositeBitmapSource()));
         using var stream = File.Create(dialog.FileName);
         encoder.Save(stream);
+        _wasSavedOrCopied = true;
+        return true;
     }
 
     private void NotImplemented_Click(object sender, RoutedEventArgs e) { }
@@ -620,7 +629,7 @@ public partial class EditorWindow : Window
         var version = Assembly.GetExecutingAssembly().GetName().Version;
         var versionText = version is null ? "unbekannt" : $"{version.Major}.{version.Minor}.{version.Build}";
         WPFMessageBox.Show(this,
-            $"RedShot\nVersion {versionText}\n\nEditor: Shapes-RectangleEllipseLine-V1",
+            $"RedShot\nVersion {versionText}\n\nEditor: CloseSavePrompt-V1",
             "Ueber RedShot", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
@@ -636,6 +645,28 @@ public partial class EditorWindow : Window
         }
 
         base.OnPreviewKeyDown(e);
+    }
+
+    protected override void OnClosing(ClosingCancelEventArgs e)
+    {
+        if (!_wasSavedOrCopied)
+        {
+            var result = WPFMessageBox.Show(
+                this,
+                "Das Bild wurde noch nicht gespeichert oder in die Zwischenablage kopiert.\n\nSoll es jetzt gespeichert werden?",
+                "RedShot schließen",
+                MessageBoxButton.YesNoCancel,
+                MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Cancel ||
+                result == MessageBoxResult.Yes && !SaveImage())
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        base.OnClosing(e);
     }
 
     protected override void OnClosed(EventArgs e)
