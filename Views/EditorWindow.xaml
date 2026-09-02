@@ -148,6 +148,22 @@
                 <ComboBoxItem Content="8" Tag="8"/>
                 <ComboBoxItem Content="10" Tag="10"/>
             </ComboBox>
+            <Separator x:Name="LineArrowSeparator" Visibility="Collapsed"/>
+            <TextBlock x:Name="LineArrowLabel"
+                       Text="Pfeil"
+                       VerticalAlignment="Center"
+                       Margin="4,0,5,0"
+                       Visibility="Collapsed"/>
+            <ComboBox x:Name="LineArrowComboBox"
+                      Width="82"
+                      SelectedIndex="0"
+                      Visibility="Collapsed"
+                      SelectionChanged="LineArrowComboBox_SelectionChanged">
+                <ComboBoxItem Content="Keine" Tag="None"/>
+                <ComboBoxItem Content="Anfang" Tag="Start"/>
+                <ComboBoxItem Content="Ende" Tag="End"/>
+                <ComboBoxItem Content="Beide" Tag="Both"/>
+            </ComboBox>
         </ToolBar>
 
         <Popup x:Name="BackgroundColorPopup"
@@ -248,15 +264,11 @@
                               ToolTip="Ellipse"
                               Tag="Ellipse"
                               Click="Tool_Click"/>
-                <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
+                <ToggleButton x:Name="LineToolButton"
+                              Style="{StaticResource ToolToggleButtonStyle}"
                               Content="╱"
                               ToolTip="Linie"
                               Tag="Line"
-                              Click="Tool_Click"/>
-                <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
-                              Content="↗"
-                              ToolTip="Pfeil"
-                              Tag="Arrow"
                               Click="Tool_Click"/>
                 <ToggleButton Style="{StaticResource ToolToggleButtonStyle}"
                               Content="✎"

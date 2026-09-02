@@ -20,7 +20,6 @@ using WPFKeyEventArgs = System.Windows.Input.KeyEventArgs;
 using WPFMessageBox = System.Windows.MessageBox;
 using WPFRectangle = System.Windows.Shapes.Rectangle;
 using WPFEllipse = System.Windows.Shapes.Ellipse;
-using WPFLine = System.Windows.Shapes.Line;
 using WPFShape = System.Windows.Shapes.Shape;
 using WPFSaveFileDialog = Microsoft.Win32.SaveFileDialog;
 using WinFormsColorDialog = System.Windows.Forms.ColorDialog;
@@ -51,6 +50,7 @@ public partial class EditorWindow : Window
     private WPFColor _foregroundColor = WPFColor.FromRgb(255, 0, 0);
     private WPFColor _backgroundColor = WPFColor.FromArgb(128, 255, 255, 0);
     private double _strokeThickness = 3;
+    private LineArrowPlacement _defaultLineArrowPlacement = LineArrowPlacement.None;
     private bool _updatingToolSettings;
 
     public EditorWindow(DrawingBitmap bitmap)
@@ -161,6 +161,38 @@ public partial class EditorWindow : Window
         }
     }
 
+    private void LineArrowComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (!IsInitialized || _updatingToolSettings ||
+            LineArrowComboBox.SelectedItem is not ComboBoxItem { Tag: string value } ||
+            !Enum.TryParse(value, out LineArrowPlacement placement))
+            return;
+
+        _defaultLineArrowPlacement = placement;
+        UpdateLineToolIcon();
+
+        if (_selectedElement is { Kind: ElementKind.Line })
+        {
+            _selectedElement.ArrowPlacement = placement;
+            if (_selectedElement.Shape is ArrowLineShape line)
+                line.SetArrowPlacement(placement);
+        }
+    }
+
+    private void UpdateLineToolIcon()
+    {
+        LineToolButton.FontSize = _defaultLineArrowPlacement == LineArrowPlacement.Both
+            ? 11
+            : 16;
+        LineToolButton.Content = _defaultLineArrowPlacement switch
+        {
+            LineArrowPlacement.Start => "↙",
+            LineArrowPlacement.End => "↗",
+            LineArrowPlacement.Both => "↙↗",
+            _ => "╱"
+        };
+    }
+
     private static WPFColor ParseOpaqueColor(string value)
     {
         var color = (WPFColor)System.Windows.Media.ColorConverter.ConvertFromString(value)!;
@@ -176,6 +208,8 @@ public partial class EditorWindow : Window
 
         _selectedElement.ForegroundColor = _foregroundColor;
         _selectedElement.Shape.Stroke = new SolidColorBrush(_foregroundColor);
+        if (_selectedElement.Kind == ElementKind.Line)
+            _selectedElement.Shape.Fill = new SolidColorBrush(_foregroundColor);
     }
 
     private void ApplyBackgroundColor(WPFColor color)
@@ -213,6 +247,28 @@ public partial class EditorWindow : Window
             {
                 StrokeThicknessComboBox.SelectedItem = item;
                 break;
+            }
+        }
+
+        var lineVisibility = _selectedElement?.Kind == ElementKind.Line
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        LineArrowSeparator.Visibility = lineVisibility;
+        LineArrowLabel.Visibility = lineVisibility;
+        LineArrowComboBox.Visibility = lineVisibility;
+
+        if (_selectedElement?.Kind == ElementKind.Line)
+        {
+            foreach (var item in LineArrowComboBox.Items.OfType<ComboBoxItem>())
+            {
+                if (string.Equals(
+                    item.Tag as string,
+                    _selectedElement.ArrowPlacement.ToString(),
+                    StringComparison.Ordinal))
+                {
+                    LineArrowComboBox.SelectedItem = item;
+                    break;
+                }
             }
         }
         _updatingToolSettings = false;
@@ -346,7 +402,7 @@ public partial class EditorWindow : Window
         WPFShape shape = kind switch
         {
             ElementKind.Ellipse => new WPFEllipse(),
-            ElementKind.Line => new WPFLine(),
+            ElementKind.Line => new ArrowLineShape(),
             _ => new WPFRectangle()
         };
 
@@ -355,10 +411,13 @@ public partial class EditorWindow : Window
         shape.Cursor = WPFCursors.SizeAll;
         if (kind != ElementKind.Line)
             shape.Fill = new SolidColorBrush(_backgroundColor);
+        else
+            shape.Fill = new SolidColorBrush(_foregroundColor);
 
         var element = new ShapeElement(
             shape, kind, new Rect(start, start), _foregroundColor,
-            _backgroundColor, _strokeThickness, start, start);
+            _backgroundColor, _strokeThickness, start, start,
+            _defaultLineArrowPlacement);
         shape.Tag = element;
         _elements.Add(element);
         AnnotationCanvas.Children.Add(shape);
@@ -417,12 +476,10 @@ public partial class EditorWindow : Window
         element.EndPoint = end;
         element.Bounds = NormalizeRect(start, end);
 
-        if (element.Shape is WPFLine line)
+        if (element.Shape is ArrowLineShape line)
         {
-            line.X1 = start.X;
-            line.Y1 = start.Y;
-            line.X2 = end.X;
-            line.Y2 = end.Y;
+            line.SetPoints(start, end);
+            line.SetArrowPlacement(element.ArrowPlacement);
         }
 
         if (ReferenceEquals(_selectedElement, element))
@@ -629,7 +686,7 @@ public partial class EditorWindow : Window
         var version = Assembly.GetExecutingAssembly().GetName().Version;
         var versionText = version is null ? "unbekannt" : $"{version.Major}.{version.Minor}.{version.Build}";
         WPFMessageBox.Show(this,
-            $"RedShot\nVersion {versionText}\n\nEditor: CloseSavePrompt-V1",
+            $"RedShot\nVersion {versionText}\n\nEditor: LineArrowOptions-V1",
             "Ueber RedShot", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
@@ -679,7 +736,8 @@ public partial class EditorWindow : Window
     private sealed class ShapeElement(
         WPFShape shape, ElementKind kind, Rect bounds,
         WPFColor foregroundColor, WPFColor backgroundColor,
-        double strokeThickness, WPFPoint startPoint, WPFPoint endPoint)
+        double strokeThickness, WPFPoint startPoint, WPFPoint endPoint,
+        LineArrowPlacement arrowPlacement)
     {
         public WPFShape Shape { get; } = shape;
         public ElementKind Kind { get; } = kind;
@@ -689,6 +747,64 @@ public partial class EditorWindow : Window
         public double StrokeThickness { get; set; } = strokeThickness;
         public WPFPoint StartPoint { get; set; } = startPoint;
         public WPFPoint EndPoint { get; set; } = endPoint;
+        public LineArrowPlacement ArrowPlacement { get; set; } = arrowPlacement;
+    }
+
+    private sealed class ArrowLineShape : WPFShape
+    {
+        private WPFPoint _startPoint;
+        private WPFPoint _endPoint;
+        private LineArrowPlacement _arrowPlacement;
+
+        public void SetPoints(WPFPoint startPoint, WPFPoint endPoint)
+        {
+            _startPoint = startPoint;
+            _endPoint = endPoint;
+            InvalidateMeasure();
+            InvalidateVisual();
+        }
+
+        public void SetArrowPlacement(LineArrowPlacement arrowPlacement)
+        {
+            _arrowPlacement = arrowPlacement;
+            InvalidateMeasure();
+            InvalidateVisual();
+        }
+
+        protected override Geometry DefiningGeometry
+        {
+            get
+            {
+                var geometry = new GeometryGroup();
+                geometry.Children.Add(new LineGeometry(_startPoint, _endPoint));
+
+                if (_arrowPlacement is LineArrowPlacement.Start or LineArrowPlacement.Both)
+                    geometry.Children.Add(CreateArrowHead(_startPoint, _endPoint));
+                if (_arrowPlacement is LineArrowPlacement.End or LineArrowPlacement.Both)
+                    geometry.Children.Add(CreateArrowHead(_endPoint, _startPoint));
+
+                return geometry;
+            }
+        }
+
+        private Geometry CreateArrowHead(WPFPoint tip, WPFPoint other)
+        {
+            var direction = tip - other;
+            if (direction.Length < 0.1)
+                return Geometry.Empty;
+
+            direction.Normalize();
+            var length = Math.Max(10, StrokeThickness * 4);
+            var halfWidth = Math.Max(5, StrokeThickness * 2);
+            var baseCenter = tip - direction * length;
+            var perpendicular = new Vector(-direction.Y, direction.X) * halfWidth;
+
+            var figure = new PathFigure { StartPoint = tip, IsClosed = true };
+            figure.Segments.Add(new LineSegment(baseCenter + perpendicular, true));
+            figure.Segments.Add(new LineSegment(baseCenter - perpendicular, true));
+
+            return new PathGeometry([figure]);
+        }
     }
 
     private enum ElementKind
@@ -696,6 +812,14 @@ public partial class EditorWindow : Window
         Rectangle,
         Ellipse,
         Line
+    }
+
+    private enum LineArrowPlacement
+    {
+        None,
+        Start,
+        End,
+        Both
     }
 
     private enum ResizeDirection
