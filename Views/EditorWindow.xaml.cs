@@ -1,4 +1,5 @@
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -27,6 +28,10 @@ using WinFormsColorDialog = System.Windows.Forms.ColorDialog;
 using DrawingColor = System.Drawing.Color;
 using WPFButton = System.Windows.Controls.Button;
 using ClosingCancelEventArgs = System.ComponentModel.CancelEventArgs;
+using WPFTextBox = System.Windows.Controls.TextBox;
+using WPFComboBox = System.Windows.Controls.ComboBox;
+using WPFFontFamily = System.Windows.Media.FontFamily;
+using WPFTextAlignment = System.Windows.TextAlignment;
 
 namespace RedShot.Views;
 
@@ -54,6 +59,13 @@ public partial class EditorWindow : Window
     private double _strokeThickness = 3;
     private LineArrowPlacement _defaultLineArrowPlacement = LineArrowPlacement.None;
     private bool _updatingToolSettings;
+    private string _fontFamilyName = "Microsoft Sans Serif";
+    private double _fontSize = 11;
+    private bool _fontBold;
+    private bool _fontItalic;
+    private WPFTextAlignment _textAlignment = WPFTextAlignment.Left;
+    private WPFTextBox? _activeTextEditor;
+    private ShapeElement? _textEditingElement;
 
     public EditorWindow(DrawingBitmap bitmap)
     {
@@ -67,6 +79,10 @@ public partial class EditorWindow : Window
         PreviewImage.Source = BitmapToBitmapSource(bitmap);
         EditorSurface.Width = bitmap.Width;
         EditorSurface.Height = bitmap.Height;
+        FontFamilyComboBox.ItemsSource = Fonts.SystemFontFamilies
+            .OrderBy(font => font.Source)
+            .ToList();
+        FontFamilyComboBox.DisplayMemberPath = "Source";
         UpdateToolSettingsFromSelection();
     }
 
@@ -195,6 +211,66 @@ public partial class EditorWindow : Window
         };
     }
 
+    private void FontFamilyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (!IsInitialized || _updatingToolSettings ||
+            FontFamilyComboBox.SelectedItem is not WPFFontFamily fontFamily)
+            return;
+
+        _fontFamilyName = fontFamily.Source;
+        ApplyTextFormatting();
+    }
+
+    private void FontSizeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (!IsInitialized || _updatingToolSettings ||
+            FontSizeComboBox.SelectedItem is not ComboBoxItem { Tag: string value } ||
+            !double.TryParse(value, NumberStyles.Number, CultureInfo.InvariantCulture, out var size))
+            return;
+
+        _fontSize = size;
+        ApplyTextFormatting();
+    }
+
+    private void TextStyleButton_Changed(object sender, RoutedEventArgs e)
+    {
+        if (!IsInitialized || _updatingToolSettings)
+            return;
+
+        _fontBold = BoldTextButton.IsChecked == true;
+        _fontItalic = ItalicTextButton.IsChecked == true;
+        ApplyTextFormatting();
+    }
+
+    private void TextAlignmentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (!IsInitialized || _updatingToolSettings ||
+            TextAlignmentComboBox.SelectedItem is not ComboBoxItem { Tag: string value } ||
+            !Enum.TryParse(value, out WPFTextAlignment alignment))
+            return;
+
+        _textAlignment = alignment;
+        ApplyTextFormatting();
+    }
+
+    private void ApplyTextFormatting()
+    {
+        if (_selectedElement is not { Kind: ElementKind.Text } element ||
+            element.Shape is not TextBoxShape textShape)
+            return;
+
+        element.FontFamilyName = _fontFamilyName;
+        element.FontSize = _fontSize;
+        element.FontBold = _fontBold;
+        element.FontItalic = _fontItalic;
+        element.TextAlignment = _textAlignment;
+        textShape.SetTextFormatting(
+            _fontFamilyName, _fontSize, _fontBold, _fontItalic, _textAlignment);
+
+        if (_activeTextEditor is not null)
+            ApplyTextEditorFormatting(_activeTextEditor);
+    }
+
     private static WPFColor ParseOpaqueColor(string value)
     {
         var color = (WPFColor)System.Windows.Media.ColorConverter.ConvertFromString(value)!;
@@ -223,7 +299,7 @@ public partial class EditorWindow : Window
             return;
 
         _selectedElement.BackgroundColor = _backgroundColor;
-        if (_selectedElement.Kind is ElementKind.Rectangle or ElementKind.Ellipse)
+        if (_selectedElement.Kind is ElementKind.Rectangle or ElementKind.Ellipse or ElementKind.Text)
             _selectedElement.Shape.Fill = new SolidColorBrush(_backgroundColor);
     }
 
@@ -234,6 +310,14 @@ public partial class EditorWindow : Window
             _foregroundColor = _selectedElement.ForegroundColor;
             _backgroundColor = _selectedElement.BackgroundColor;
             _strokeThickness = _selectedElement.StrokeThickness;
+            if (_selectedElement.Kind == ElementKind.Text)
+            {
+                _fontFamilyName = _selectedElement.FontFamilyName;
+                _fontSize = _selectedElement.FontSize;
+                _fontBold = _selectedElement.FontBold;
+                _fontItalic = _selectedElement.FontItalic;
+                _textAlignment = _selectedElement.TextAlignment;
+            }
         }
 
         _updatingToolSettings = true;
@@ -255,7 +339,7 @@ public partial class EditorWindow : Window
         var lineVisibility = _selectedElement?.Kind == ElementKind.Line
             ? Visibility.Visible
             : Visibility.Collapsed;
-        BackgroundColorButton.Visibility = _selectedElement?.Kind is ElementKind.Rectangle or ElementKind.Ellipse
+        BackgroundColorButton.Visibility = _selectedElement?.Kind is ElementKind.Rectangle or ElementKind.Ellipse or ElementKind.Text
             ? Visibility.Visible
             : Visibility.Collapsed;
         LineArrowSeparator.Visibility = lineVisibility;
@@ -276,7 +360,37 @@ public partial class EditorWindow : Window
                 }
             }
         }
+
+        var textVisibility = _selectedElement?.Kind == ElementKind.Text
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        TextFormatSeparator.Visibility = textVisibility;
+        FontFamilyComboBox.Visibility = textVisibility;
+        FontSizeLabel.Visibility = textVisibility;
+        FontSizeComboBox.Visibility = textVisibility;
+        BoldTextButton.Visibility = textVisibility;
+        ItalicTextButton.Visibility = textVisibility;
+        TextAlignmentComboBox.Visibility = textVisibility;
+
+        if (_selectedElement?.Kind == ElementKind.Text)
+        {
+            FontFamilyComboBox.SelectedItem = FontFamilyComboBox.Items
+                .OfType<WPFFontFamily>()
+                .FirstOrDefault(font => string.Equals(
+                    font.Source, _fontFamilyName, StringComparison.OrdinalIgnoreCase));
+            SelectComboBoxItem(FontSizeComboBox, _fontSize.ToString(CultureInfo.InvariantCulture));
+            BoldTextButton.IsChecked = _fontBold;
+            ItalicTextButton.IsChecked = _fontItalic;
+            SelectComboBoxItem(TextAlignmentComboBox, _textAlignment.ToString());
+        }
         _updatingToolSettings = false;
+    }
+
+    private static void SelectComboBoxItem(WPFComboBox comboBox, string tag)
+    {
+        comboBox.SelectedItem = comboBox.Items
+            .OfType<ComboBoxItem>()
+            .FirstOrDefault(item => string.Equals(item.Tag as string, tag, StringComparison.Ordinal));
     }
 
     private void SetActiveTool(string tool, ToggleButton? selectedButton = null)
@@ -304,10 +418,11 @@ public partial class EditorWindow : Window
     }
 
     private static bool IsDrawingTool(string tool) =>
-        tool is "Rectangle" or "Ellipse" or "Line" or "Freehand";
+        tool is "Rectangle" or "Ellipse" or "Line" or "Freehand" or "Text";
 
     private void EditorSurface_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
+        CommitTextEditing();
         var position = ClampToSurface(e.GetPosition(EditorSurface));
 
         if (IsDrawingTool(_activeTool))
@@ -325,6 +440,13 @@ public partial class EditorWindow : Window
         SelectElement(clickedElement);
         if (clickedElement is null)
             return;
+
+        if (clickedElement.Kind == ElementKind.Text && e.ClickCount > 1)
+        {
+            BeginTextEditing(clickedElement);
+            e.Handled = true;
+            return;
+        }
 
         _operationStart = position;
         _operationStartBounds = clickedElement.Bounds;
@@ -409,7 +531,11 @@ public partial class EditorWindow : Window
             if (isTooSmall)
                 RemoveElement(_newElement);
             else
+            {
                 SelectElement(_newElement);
+                if (_newElement.Kind == ElementKind.Text)
+                    BeginTextEditing(_newElement);
+            }
 
             _newElement = null;
         }
@@ -426,6 +552,7 @@ public partial class EditorWindow : Window
             "Ellipse" => ElementKind.Ellipse,
             "Line" => ElementKind.Line,
             "Freehand" => ElementKind.Freehand,
+            "Text" => ElementKind.Text,
             _ => ElementKind.Rectangle
         };
 
@@ -439,13 +566,14 @@ public partial class EditorWindow : Window
                 StrokeStartLineCap = PenLineCap.Round,
                 StrokeEndLineCap = PenLineCap.Round
             },
+            ElementKind.Text => new TextBoxShape(),
             _ => new WPFRectangle()
         };
 
         shape.Stroke = new SolidColorBrush(_foregroundColor);
         shape.StrokeThickness = _strokeThickness;
         shape.Cursor = WPFCursors.SizeAll;
-        if (kind is ElementKind.Rectangle or ElementKind.Ellipse)
+        if (kind is ElementKind.Rectangle or ElementKind.Ellipse or ElementKind.Text)
             shape.Fill = new SolidColorBrush(_backgroundColor);
         else if (kind == ElementKind.Line)
             shape.Fill = new SolidColorBrush(_foregroundColor);
@@ -453,7 +581,8 @@ public partial class EditorWindow : Window
         var element = new ShapeElement(
             shape, kind, new Rect(start, start), _foregroundColor,
             _backgroundColor, _strokeThickness, start, start,
-            _defaultLineArrowPlacement, [start]);
+            _defaultLineArrowPlacement, [start], string.Empty,
+            _fontFamilyName, _fontSize, _fontBold, _fontItalic, _textAlignment);
         shape.Tag = element;
         _elements.Add(element);
         AnnotationCanvas.Children.Add(shape);
@@ -464,6 +593,14 @@ public partial class EditorWindow : Window
             SetFreehandPoints(element, element.Points);
         else
             SetBounds(element, element.Bounds);
+
+        if (shape is TextBoxShape textShape)
+        {
+            textShape.SetText(element.Text);
+            textShape.SetTextFormatting(
+                element.FontFamilyName, element.FontSize,
+                element.FontBold, element.FontItalic, element.TextAlignment);
+        }
 
         return element;
     }
@@ -555,6 +692,71 @@ public partial class EditorWindow : Window
         return new Rect(
             new WPFPoint(points.Min(point => point.X), points.Min(point => point.Y)),
             new WPFPoint(points.Max(point => point.X), points.Max(point => point.Y)));
+    }
+
+    private void BeginTextEditing(ShapeElement element)
+    {
+        if (element.Kind != ElementKind.Text)
+            return;
+
+        CommitTextEditing();
+        _textEditingElement = element;
+
+        var editor = new WPFTextBox
+        {
+            Text = element.Text,
+            AcceptsReturn = true,
+            AcceptsTab = true,
+            TextWrapping = TextWrapping.Wrap,
+            BorderThickness = new Thickness(0),
+            Padding = new Thickness(4),
+            Background = WPFBrushes.Transparent,
+            Foreground = new SolidColorBrush(element.ForegroundColor),
+            Cursor = WPFCursors.IBeam
+        };
+        ApplyTextEditorFormatting(editor);
+        editor.LostKeyboardFocus += TextEditor_LostKeyboardFocus;
+
+        Canvas.SetLeft(editor, element.Bounds.Left + element.StrokeThickness);
+        Canvas.SetTop(editor, element.Bounds.Top + element.StrokeThickness);
+        editor.Width = Math.Max(1, element.Bounds.Width - element.StrokeThickness * 2);
+        editor.Height = Math.Max(1, element.Bounds.Height - element.StrokeThickness * 2);
+        SelectionCanvas.Children.Add(editor);
+        _activeTextEditor = editor;
+        Mouse.OverrideCursor = null;
+
+        editor.Focus();
+        editor.CaretIndex = editor.Text.Length;
+    }
+
+    private void ApplyTextEditorFormatting(WPFTextBox editor)
+    {
+        editor.FontFamily = new WPFFontFamily(_fontFamilyName);
+        editor.FontSize = _fontSize;
+        editor.FontWeight = _fontBold ? FontWeights.Bold : FontWeights.Normal;
+        editor.FontStyle = _fontItalic ? FontStyles.Italic : FontStyles.Normal;
+        editor.TextAlignment = _textAlignment;
+        editor.Foreground = new SolidColorBrush(_foregroundColor);
+    }
+
+    private void TextEditor_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) =>
+        CommitTextEditing();
+
+    private void CommitTextEditing()
+    {
+        if (_activeTextEditor is null || _textEditingElement is null)
+            return;
+
+        var editor = _activeTextEditor;
+        var element = _textEditingElement;
+        _activeTextEditor = null;
+        _textEditingElement = null;
+        editor.LostKeyboardFocus -= TextEditor_LostKeyboardFocus;
+
+        element.Text = editor.Text;
+        if (element.Shape is TextBoxShape textShape)
+            textShape.SetText(element.Text);
+        SelectionCanvas.Children.Remove(editor);
     }
 
     private void UpdateSelectionHandles()
@@ -715,6 +917,7 @@ public partial class EditorWindow : Window
 
     private BitmapSource CreateCompositeBitmapSource()
     {
+        CommitTextEditing();
         var oldVisibility = SelectionCanvas.Visibility;
         SelectionCanvas.Visibility = Visibility.Collapsed;
         EditorSurface.UpdateLayout();
@@ -780,7 +983,7 @@ public partial class EditorWindow : Window
         var version = Assembly.GetExecutingAssembly().GetName().Version;
         var versionText = version is null ? "unbekannt" : $"{version.Major}.{version.Minor}.{version.Build}";
         WPFMessageBox.Show(this,
-            $"RedShot\nVersion {versionText}\n\nEditor: Freehand-V1",
+            $"RedShot\nVersion {versionText}\n\nEditor: TextTool-V1",
             "Ueber RedShot", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
@@ -788,6 +991,12 @@ public partial class EditorWindow : Window
 
     protected override void OnPreviewKeyDown(WPFKeyEventArgs e)
     {
+        if (_activeTextEditor?.IsKeyboardFocusWithin == true)
+        {
+            base.OnPreviewKeyDown(e);
+            return;
+        }
+
         if (e.Key == WPFKey.Delete && _selectedElement is not null)
         {
             RemoveElement(_selectedElement);
@@ -831,7 +1040,9 @@ public partial class EditorWindow : Window
         WPFShape shape, ElementKind kind, Rect bounds,
         WPFColor foregroundColor, WPFColor backgroundColor,
         double strokeThickness, WPFPoint startPoint, WPFPoint endPoint,
-        LineArrowPlacement arrowPlacement, List<WPFPoint> points)
+        LineArrowPlacement arrowPlacement, List<WPFPoint> points,
+        string text, string fontFamilyName, double fontSize,
+        bool fontBold, bool fontItalic, WPFTextAlignment textAlignment)
     {
         public WPFShape Shape { get; } = shape;
         public ElementKind Kind { get; } = kind;
@@ -843,6 +1054,75 @@ public partial class EditorWindow : Window
         public WPFPoint EndPoint { get; set; } = endPoint;
         public LineArrowPlacement ArrowPlacement { get; set; } = arrowPlacement;
         public List<WPFPoint> Points { get; set; } = points;
+        public string Text { get; set; } = text;
+        public string FontFamilyName { get; set; } = fontFamilyName;
+        public double FontSize { get; set; } = fontSize;
+        public bool FontBold { get; set; } = fontBold;
+        public bool FontItalic { get; set; } = fontItalic;
+        public WPFTextAlignment TextAlignment { get; set; } = textAlignment;
+    }
+
+    private sealed class TextBoxShape : WPFShape
+    {
+        private string _text = string.Empty;
+        private string _fontFamilyName = "Microsoft Sans Serif";
+        private double _fontSize = 11;
+        private bool _fontBold;
+        private bool _fontItalic;
+        private WPFTextAlignment _textAlignment = WPFTextAlignment.Left;
+
+        public void SetText(string text)
+        {
+            _text = text;
+            InvalidateVisual();
+        }
+
+        public void SetTextFormatting(
+            string fontFamilyName, double fontSize, bool fontBold,
+            bool fontItalic, WPFTextAlignment textAlignment)
+        {
+            _fontFamilyName = fontFamilyName;
+            _fontSize = fontSize;
+            _fontBold = fontBold;
+            _fontItalic = fontItalic;
+            _textAlignment = textAlignment;
+            InvalidateVisual();
+        }
+
+        protected override Geometry DefiningGeometry =>
+            new RectangleGeometry(new Rect(0, 0, Math.Max(0, ActualWidth), Math.Max(0, ActualHeight)));
+
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
+            if (string.IsNullOrEmpty(_text) || ActualWidth <= 8 || ActualHeight <= 8)
+                return;
+
+            var typeface = new Typeface(
+                new WPFFontFamily(_fontFamilyName),
+                _fontItalic ? FontStyles.Italic : FontStyles.Normal,
+                _fontBold ? FontWeights.Bold : FontWeights.Normal,
+                FontStretches.Normal);
+            var text = new FormattedText(
+                _text,
+                CultureInfo.CurrentUICulture,
+                System.Windows.FlowDirection.LeftToRight,
+                typeface,
+                _fontSize,
+                Stroke ?? WPFBrushes.Black,
+                VisualTreeHelper.GetDpi(this).PixelsPerDip)
+            {
+                MaxTextWidth = Math.Max(1, ActualWidth - 8),
+                MaxTextHeight = Math.Max(1, ActualHeight - 8),
+                TextAlignment = _textAlignment,
+                Trimming = TextTrimming.None
+            };
+
+            drawingContext.PushClip(
+                new RectangleGeometry(new Rect(4, 4, ActualWidth - 8, ActualHeight - 8)));
+            drawingContext.DrawText(text, new WPFPoint(4, 4));
+            drawingContext.Pop();
+        }
     }
 
     private sealed class ArrowLineShape : WPFShape
@@ -907,7 +1187,8 @@ public partial class EditorWindow : Window
         Rectangle,
         Ellipse,
         Line,
-        Freehand
+        Freehand,
+        Text
     }
 
     private enum LineArrowPlacement
