@@ -20,6 +20,7 @@ using WPFKeyEventArgs = System.Windows.Input.KeyEventArgs;
 using WPFMessageBox = System.Windows.MessageBox;
 using WPFRectangle = System.Windows.Shapes.Rectangle;
 using WPFEllipse = System.Windows.Shapes.Ellipse;
+using WPFPolyline = System.Windows.Shapes.Polyline;
 using WPFShape = System.Windows.Shapes.Shape;
 using WPFSaveFileDialog = Microsoft.Win32.SaveFileDialog;
 using WinFormsColorDialog = System.Windows.Forms.ColorDialog;
@@ -40,6 +41,7 @@ public partial class EditorWindow : Window
     private ShapeElement? _newElement;
     private WPFPoint _operationStartLinePoint;
     private WPFPoint _operationEndLinePoint;
+    private List<WPFPoint> _operationStartFreehandPoints = [];
     private WPFPoint _operationStart;
     private Rect _operationStartBounds;
     private bool _isDrawing;
@@ -221,7 +223,7 @@ public partial class EditorWindow : Window
             return;
 
         _selectedElement.BackgroundColor = _backgroundColor;
-        if (_selectedElement.Kind != ElementKind.Line)
+        if (_selectedElement.Kind is ElementKind.Rectangle or ElementKind.Ellipse)
             _selectedElement.Shape.Fill = new SolidColorBrush(_backgroundColor);
     }
 
@@ -251,6 +253,9 @@ public partial class EditorWindow : Window
         }
 
         var lineVisibility = _selectedElement?.Kind == ElementKind.Line
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        BackgroundColorButton.Visibility = _selectedElement?.Kind is ElementKind.Rectangle or ElementKind.Ellipse
             ? Visibility.Visible
             : Visibility.Collapsed;
         LineArrowSeparator.Visibility = lineVisibility;
@@ -286,16 +291,20 @@ public partial class EditorWindow : Window
                     : string.Equals(button.Tag as string, tool, StringComparison.Ordinal);
         }
 
-        var cursor = IsDrawingTool(tool) ? WPFCursors.Cross : WPFCursors.Arrow;
+        var cursor = tool == "Freehand"
+            ? WPFCursors.Pen
+            : IsDrawingTool(tool) ? WPFCursors.Cross : WPFCursors.Arrow;
         EditorSurface.Cursor = cursor;
         AnnotationCanvas.Cursor = cursor;
         SelectionCanvas.Cursor = cursor;
-        Mouse.OverrideCursor = IsDrawingTool(tool) ? WPFCursors.Cross : null;
+        Mouse.OverrideCursor = tool == "Freehand"
+            ? WPFCursors.Pen
+            : IsDrawingTool(tool) ? WPFCursors.Cross : null;
         UpdateSelectionHandles();
     }
 
     private static bool IsDrawingTool(string tool) =>
-        tool is "Rectangle" or "Ellipse" or "Line";
+        tool is "Rectangle" or "Ellipse" or "Line" or "Freehand";
 
     private void EditorSurface_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
@@ -321,6 +330,7 @@ public partial class EditorWindow : Window
         _operationStartBounds = clickedElement.Bounds;
         _operationStartLinePoint = clickedElement.StartPoint;
         _operationEndLinePoint = clickedElement.EndPoint;
+        _operationStartFreehandPoints = [.. clickedElement.Points];
         _isMoving = true;
         EditorSurface.CaptureMouse();
         e.Handled = true;
@@ -334,6 +344,8 @@ public partial class EditorWindow : Window
         {
             if (_newElement.Kind == ElementKind.Line)
                 SetLinePoints(_newElement, _operationStart, position);
+            else if (_newElement.Kind == ElementKind.Freehand)
+                AddFreehandPoint(_newElement, position);
             else
                 SetBounds(_newElement, NormalizeRect(_operationStart, position));
             return;
@@ -358,6 +370,20 @@ public partial class EditorWindow : Window
             return;
         }
 
+        if (_selectedElement.Kind == ElementKind.Freehand)
+        {
+            var minX = _operationStartBounds.Left;
+            var maxX = _operationStartBounds.Right;
+            var minY = _operationStartBounds.Top;
+            var maxY = _operationStartBounds.Bottom;
+            delta.X = Math.Clamp(delta.X, -minX, EditorSurface.Width - maxX);
+            delta.Y = Math.Clamp(delta.Y, -minY, EditorSurface.Height - maxY);
+            SetFreehandPoints(
+                _selectedElement,
+                _operationStartFreehandPoints.Select(point => point + delta));
+            return;
+        }
+
         var bounds = _operationStartBounds;
         bounds.X = Math.Clamp(bounds.X + delta.X, 0, EditorSurface.Width - bounds.Width);
         bounds.Y = Math.Clamp(bounds.Y + delta.Y, 0, EditorSurface.Height - bounds.Height);
@@ -374,6 +400,9 @@ public partial class EditorWindow : Window
         {
             var isTooSmall = _newElement.Kind == ElementKind.Line
                 ? (_newElement.EndPoint - _newElement.StartPoint).Length < MinimumElementSize
+                : _newElement.Kind == ElementKind.Freehand
+                    ? _newElement.Points.Count < 2 ||
+                      Math.Max(_newElement.Bounds.Width, _newElement.Bounds.Height) < MinimumElementSize
                 : _newElement.Bounds.Width < MinimumElementSize ||
                   _newElement.Bounds.Height < MinimumElementSize;
 
@@ -396,6 +425,7 @@ public partial class EditorWindow : Window
         {
             "Ellipse" => ElementKind.Ellipse,
             "Line" => ElementKind.Line,
+            "Freehand" => ElementKind.Freehand,
             _ => ElementKind.Rectangle
         };
 
@@ -403,27 +433,35 @@ public partial class EditorWindow : Window
         {
             ElementKind.Ellipse => new WPFEllipse(),
             ElementKind.Line => new ArrowLineShape(),
+            ElementKind.Freehand => new WPFPolyline
+            {
+                StrokeLineJoin = PenLineJoin.Round,
+                StrokeStartLineCap = PenLineCap.Round,
+                StrokeEndLineCap = PenLineCap.Round
+            },
             _ => new WPFRectangle()
         };
 
         shape.Stroke = new SolidColorBrush(_foregroundColor);
         shape.StrokeThickness = _strokeThickness;
         shape.Cursor = WPFCursors.SizeAll;
-        if (kind != ElementKind.Line)
+        if (kind is ElementKind.Rectangle or ElementKind.Ellipse)
             shape.Fill = new SolidColorBrush(_backgroundColor);
-        else
+        else if (kind == ElementKind.Line)
             shape.Fill = new SolidColorBrush(_foregroundColor);
 
         var element = new ShapeElement(
             shape, kind, new Rect(start, start), _foregroundColor,
             _backgroundColor, _strokeThickness, start, start,
-            _defaultLineArrowPlacement);
+            _defaultLineArrowPlacement, [start]);
         shape.Tag = element;
         _elements.Add(element);
         AnnotationCanvas.Children.Add(shape);
 
         if (kind == ElementKind.Line)
             SetLinePoints(element, start, start);
+        else if (kind == ElementKind.Freehand)
+            SetFreehandPoints(element, element.Points);
         else
             SetBounds(element, element.Bounds);
 
@@ -484,6 +522,39 @@ public partial class EditorWindow : Window
 
         if (ReferenceEquals(_selectedElement, element))
             PositionSelectionHandles();
+    }
+
+    private void AddFreehandPoint(ShapeElement element, WPFPoint point)
+    {
+        if (element.Points.Count > 0 &&
+            (point - element.Points[^1]).Length < 1)
+            return;
+
+        element.Points.Add(point);
+        SetFreehandPoints(element, element.Points);
+    }
+
+    private void SetFreehandPoints(ShapeElement element, IEnumerable<WPFPoint> points)
+    {
+        var pointList = points.ToList();
+        element.Points = pointList;
+
+        if (element.Shape is WPFPolyline polyline)
+            polyline.Points = new PointCollection(pointList);
+
+        element.Bounds = GetPointBounds(pointList);
+        if (ReferenceEquals(_selectedElement, element))
+            PositionSelectionHandles();
+    }
+
+    private static Rect GetPointBounds(IReadOnlyCollection<WPFPoint> points)
+    {
+        if (points.Count == 0)
+            return Rect.Empty;
+
+        return new Rect(
+            new WPFPoint(points.Min(point => point.X), points.Min(point => point.Y)),
+            new WPFPoint(points.Max(point => point.X), points.Max(point => point.Y)));
     }
 
     private void UpdateSelectionHandles()
@@ -608,7 +679,30 @@ public partial class EditorWindow : Window
         if (direction is ResizeDirection.Bottom or ResizeDirection.BottomLeft or ResizeDirection.BottomRight)
             bottom = Math.Clamp(bottom + e.VerticalChange, top + MinimumElementSize, EditorSurface.Height);
 
-        SetBounds(_selectedElement, new Rect(new WPFPoint(left, top), new WPFPoint(right, bottom)));
+        var newBounds = new Rect(new WPFPoint(left, top), new WPFPoint(right, bottom));
+        if (_selectedElement.Kind == ElementKind.Freehand)
+            ResizeFreehand(_selectedElement, b, newBounds);
+        else
+            SetBounds(_selectedElement, newBounds);
+    }
+
+    private void ResizeFreehand(ShapeElement element, Rect oldBounds, Rect newBounds)
+    {
+        var points = element.Points.Select(point =>
+        {
+            var relativeX = oldBounds.Width < 0.01
+                ? 0.5
+                : (point.X - oldBounds.Left) / oldBounds.Width;
+            var relativeY = oldBounds.Height < 0.01
+                ? 0.5
+                : (point.Y - oldBounds.Top) / oldBounds.Height;
+
+            return new WPFPoint(
+                newBounds.Left + relativeX * newBounds.Width,
+                newBounds.Top + relativeY * newBounds.Height);
+        });
+
+        SetFreehandPoints(element, points);
     }
 
     private WPFPoint ClampToSurface(WPFPoint point) => new(
@@ -686,7 +780,7 @@ public partial class EditorWindow : Window
         var version = Assembly.GetExecutingAssembly().GetName().Version;
         var versionText = version is null ? "unbekannt" : $"{version.Major}.{version.Minor}.{version.Build}";
         WPFMessageBox.Show(this,
-            $"RedShot\nVersion {versionText}\n\nEditor: LineArrow-SmallSharp-V1",
+            $"RedShot\nVersion {versionText}\n\nEditor: Freehand-V1",
             "Ueber RedShot", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
@@ -737,7 +831,7 @@ public partial class EditorWindow : Window
         WPFShape shape, ElementKind kind, Rect bounds,
         WPFColor foregroundColor, WPFColor backgroundColor,
         double strokeThickness, WPFPoint startPoint, WPFPoint endPoint,
-        LineArrowPlacement arrowPlacement)
+        LineArrowPlacement arrowPlacement, List<WPFPoint> points)
     {
         public WPFShape Shape { get; } = shape;
         public ElementKind Kind { get; } = kind;
@@ -748,6 +842,7 @@ public partial class EditorWindow : Window
         public WPFPoint StartPoint { get; set; } = startPoint;
         public WPFPoint EndPoint { get; set; } = endPoint;
         public LineArrowPlacement ArrowPlacement { get; set; } = arrowPlacement;
+        public List<WPFPoint> Points { get; set; } = points;
     }
 
     private sealed class ArrowLineShape : WPFShape
@@ -811,7 +906,8 @@ public partial class EditorWindow : Window
     {
         Rectangle,
         Ellipse,
-        Line
+        Line,
+        Freehand
     }
 
     private enum LineArrowPlacement
