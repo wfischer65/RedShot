@@ -686,7 +686,7 @@ public partial class EditorWindow : Window
         var version = Assembly.GetExecutingAssembly().GetName().Version;
         var versionText = version is null ? "unbekannt" : $"{version.Major}.{version.Minor}.{version.Build}";
         WPFMessageBox.Show(this,
-            $"RedShot\nVersion {versionText}\n\nEditor: LineArrowOptions-V1",
+            $"RedShot\nVersion {versionText}\n\nEditor: LineArrow-SmallSharp-V1",
             "Ueber RedShot", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
@@ -794,8 +794,8 @@ public partial class EditorWindow : Window
                 return Geometry.Empty;
 
             direction.Normalize();
-            var length = Math.Max(10, StrokeThickness * 4);
-            var halfWidth = Math.Max(5, StrokeThickness * 2);
+            var length = Math.Max(8, StrokeThickness * 3);
+            var halfWidth = Math.Max(3, StrokeThickness * 1.2);
             var baseCenter = tip - direction * length;
             var perpendicular = new Vector(-direction.Y, direction.X) * halfWidth;
 
